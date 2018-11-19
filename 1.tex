@@ -1,25 +1,90 @@
+% arara: pdflatex
 \documentclass[10pt,a4paper]{article}
+\def\gettexliveversion#1(#2 #3 #4#5#6#7#8)#9\relax{#4#5#6#7}
+\edef\texliveversion{\expandafter\gettexliveversion\pdftexbanner\relax}
+
+\ifnum\texliveversion<2018
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
+\else
+\fi
+\usepackage[T1]{fontenc}
+
+\usepackage[spanish,es-sloppy]{babel}
+\spanishdatedel
+
+\usepackage{amsmath,amsthm}
+\usepackage[cmintegrals]{newtxmath}
+\usepackage{xcolor}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{proposition}{Proposición}[section]
+
 \begin{document}
+\pagecolor{black}
+\color{white}
 \section{Formas Canónicas}
-\subsection{Valores y Vectores Propios }
-En lo que sigue de este capitulo, $U$, $V$, $W$ denoatarán $\mathbb{K}-$espacios vectoriales de dimención finita y $\mathbb{K}$ denotará los cuerpos $\mathbb{R}$ o $\mathbb{C}$, salvo mención especifica distinta.\\
-\textbf{Definición.} Dada una transformación lineal $T : V \rightarrow{V},$ un número $\lambda \in \mathbb{K}$ se llama \textbf{valor propio} o \textbf{autovalor} de $T$, si existe un vector $v \in V,$ $v \neq 0,$ tal que $T(v) = \lambda v.$ Este vector se llama \textbf{vector propio} o \textbf{autovector} de $T$ correspondiente al autovalor $\lambda$.
 
-Llamaremos valor propio y vector propio de una matriz $A$, al valor propio y vector propio correspondiente de la transformación lineal $L_{A}$, respectivamente. \\
-Los autovectores de $T$ y $A_{T}$, en general, se hallan en espacios vectoriales distintos y no tienen que ser iguales. En cambio los autovalores se hallan en el mismo cuerpo $\mathbb{K}$, por lo que cabe la pregunta ¿son éstos iguales o distintos? Una elegante respuesta a esta interrogante se da en las siguientes proposiciones.\\
+\subsection{Valores y Vectores Propios}
 
-Sea $\{v_{1},...v_{n}\}$ una base de $V$ y $A_{T}$ la matriz asociada a la transformación lineal $T: V \rightarrow{V}$ en esta base, A cada vector $v \in V$ , $v = \displaystyle\sum_{j=1}^{n}x_{j}v_{j},$ le asociamos su vector de coordenadas $x_{v} = (x_{1},...,x_{n}) \in \mathbb{K}$. Con estas notaciones tenemos el siguiente resultado.\\
+En lo que sigue de este capitulo, $U$, $V$, $W$ denotarán $\mathbb{K}$-espacios vectoriales de dimensión finita y $\mathbb{K}$ denotará los cuerpos $\mathbb{R}$ o $\mathbb{C}$, salvo mención especifica distinta.
 
-\textbf{Proposición.} La función $\psi : V \rightarrow \mathbb{K}^{n \times 1}$, definida por $\psi(v) = x_{v}$, es un isomorfismo y satisface 
-$$\psi(T(v)) = A_{T}(x_{v})$$
+\begin{definition}
+Dada una transformación lineal $T\colon V \rightarrow{V}$, un número $\lambda\in\mathbb{K}$ se llama \emph{valor propio} o \emph{autovalor} de $T$, si existe un vector $v\in V$, $v\neq0$, tal que $T(v)=\lambda v$. Este vector se llama \emph{vector propio} o \emph{autovector} de $T$ correspondiente al autovalor $\lambda$.
 
+Llamaremos valor propio y vector propio de una matriz $A$, al valor propio y vector propio correspondiente de la transformación lineal $L_{A}$, respectivamente.
+\end{definition}
 
+Los autovectores de $T$ y $A_{T}$, en general, se hallan en espacios vectoriales distintos y no tienen que ser iguales. En cambio los autovalores que se hallan en el mismo cuerpo $\mathbb{K}$, por lo que cabe la pregunta: ¿son estos iguales o distintos? Una elegante respuesta a esta interrogante se da en las siguientes proposiciones.
 
+Sea $\{v_1,\ldots,v_n\}$ una base de $V$ y $A_{T}$ la matriz asociada a la transformación lineal $T\colon V \rightarrow{V}$ en esta base. A cada vector $v\in V$ , $v = \sum\limits_{j=1}^{n}x_{j}v_{j},$ le asociamos su vector de coordenadas $x_v=(x_1,\ldots,x_n)\in\mathbb{K}$. Con estas notaciones tenemos el siguiente resultado.
 
+\begin{proposition}
+La función $\psi\colon V\rightarrow\mathbb{K}^{n\times 1}$, definida por $\psi(v)= x_v$, es un isomorfismo y satisface \[ \psi(T(v))=A_{T}(x_v) \].    
+\end{proposition}
 
+\begin{proof}
+Es inmediato que $\psi$ es una transformación lineal, además es un isomorfismo, pues lleva la base $v_{i}$ de $V$ en la base canónica $e_{j}$ de $\mathbb{K}^{n \times n}$.
 
+Por otro lado
+
+\begin{flalign*}
+\psi(T(v_{j}))  &=\psi(\sum\limits_{i=1}^{n}a_{ij}v_{i}) = (a_{1j},a_{2j},\ldots,a_{nj}) = A_{T}(e_{j})
+\intertext{de donde}
+\psi(T(v_{j}))  &=\psi(\sum\limits_{j=1}^{n}x_{j}T(v_{j})) = \sum\limits_{j=1}^{n}x_{j}\psi(T(v_{j}))\\
+\psi(T(v_{j}))  &=\sum\limits_{x_{j}}^{n}{A_{T}}(e_{j}) = A_{T}(x_{1},\ldots,x_{n})^{t}\\
+\psi(T(v_{j}))  &=A_{T}(x_{v})
+\end{flalign*}
+Esto concluye la prueba de la proposición.
+\end{proof}
+
+\begin{proposition}
+Una transformación lineal $T\colon V\rightarrow V$ y su matriz asociada $A_{T}$ tienen los mismos autovalores.
+\end{proposition}
+
+\begin{proof}
+Sea $\lambda$ un autovalor de $T$ y $v\in V$ un autovector correspondiente a $\lambda$, entonces
+\begin{flalign*}
+A_{T}(x_{v}) &= \psi(T_{v})\\
+A_{T}(x_{v}) &= \psi(\lambda v)=\lambda\psi(v)\\
+A_{T}(x_{v}) &= \lambda x_{v}
+\end{flalign*}
+Esto prueba que $\lambda$ es un autovalor de $A_{T}.$
+
+Recíprocamente, sea $\lambda$ un autovalor de $A_{T}$ y $x\in\mathbb{K}^{n\times 1}$ un correspondiente autovector. Existe entonces un vector $v\in V$ tal que $\psi(v)=x$ (pues $\psi$ es un isomorfismo), de donde
+%\[
+%\begin{aligned}
+%\psi(T_{v}) &\rightarrow\rn[1]\\
+%(x,y,z)&\longmapsto\sign\left(\frac{2}{x^{2}+y^{2}+z^{2}+1}-1\right)-6.
+%\end{aligned}
+%\]
+\begin{align*}
+\psi(T_{v}) &= A_{T}x \\
+            &= \lambda x = \lambda\psi(v)\\
+            &= \psi(\lambda v)
+\end{align*}
+ 
+Siendo $\psi$ inyectiva, resulta $T(v)  = \lambda v$. Como $v \neq0$, $\lambda$ es un autovalor de $T$. Esto prueba la proposición.
+
+\end{proof}
 \end{document}
