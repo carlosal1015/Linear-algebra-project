@@ -1,0 +1,419 @@
+% !TeX document-id = {9d223eca-9818-4f05-a953-42e014392f08}
+% !TeX TXS-program:compile = txs:///pdflatex // biber//pdflatex//pdflatex
+\documentclass[b5paper, 11pt]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage[left=2.6cm,right=2.6cm,top=2.6cm,bottom=4.2cm]{geometry}
+
+\usepackage{helvet}% Fuente helvética 
+\usepackage{calligra}%Para letras caligráficas
+
+%con respecto a la figura
+\renewcommand{\figurename}{Figura}
+\usepackage{wrapfig}
+\usepackage{here}
+
+%paquete de enumeracion
+\usepackage[shortlabels]{enumitem}
+
+\newcommand{\helv}{\fontfamily{phv}\fontsize{9}{11}\selectfont}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+
+% Definir las marcas: capítulo.sección -------
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{} % borra cabecera y pie actuales
+
+% El número de página
+\fancyhead[LE,RO]{\bfseries\large\thepage} %L=Left, R=right, O=Odd (impar),E=Even págs pares
+% "Marcas" a la derecha e izquierda del encabezado
+\fancyhead[LO]{\helv\rightmark}
+\fancyhead[RE]{\helv\leftmark}
+% Sin raya. Con raya?: cambiar {0} por {0.5pt}
+\renewcommand{\headrulewidth}{0.5pt} 
+
+\fancyfoot[RO]{}
+
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt} % espacio para la raya
+\fancypagestyle{plain}{%
+\fancyhead{} % elimina cabeceras y raya en páginas "plain"
+\renewcommand{\headrulewidth}{0pt}}
+
+%para matematicas
+\usepackage{amsthm,amsmath,amssymb,amsfonts,latexsym,xcolor}
+\usepackage{xlop}
+\usepackage{dsfont}
+\usepackage{calrsfs} %caligrafía matemática
+
+%Definir el vector nulo
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\K}{\mathds{K}}
+\newcommand{\N}{\mathds{N}}
+
+%para graficos
+\usepackage{xparse}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\usepackage{tcolorbox}
+
+%para cancelar terminos
+\usepackage{cancel} 
+
+\definecolor{azulF}{rgb}{.0,.0,.3} % Azul
+\definecolor{rojoF}{RGB}{212,0,0} % Rojo
+\definecolor{verdeF}{RGB}{0,102,0} % Verde
+\definecolor{naranjaF}{RGB}{255,128,0} % Naranja
+\definecolor{rojoF}{RGB}{153,0,0} %Rojo
+
+%Espacio entre párrafos
+\setlength{\parskip}{2.5mm}
+
+%Renombrando las partes del texto
+\renewcommand{\chaptername}{Capítulo}
+
+%Cambiando el simbolo de demostracion al final
+\renewcommand \qedsymbol {$\blacksquare$}
+
+
+%para los capitulos
+%\usepackage[Glenn]{fncychap}
+%\ChTitleVar{\Large\rm\centering} % sets the style for title
+
+\newtheorem{obs}{Observación}[chapter]
+%-------------------------------------------------Estilo B
+\newtheoremstyle{estiloB}
+{}
+{}
+{}
+{}
+{\color{azulF}\bfseries} % fuente del encabezado
+{} % puntuación
+{\newline} % espacio después del encabezado
+{\thmname{#1}~\thmnumber{\color{azulF} #2}\thmnote{~\color{azulF}(#3)}}
+%%--
+\theoremstyle{estiloB}
+\newtheorem{unadefig}{Definición}[chapter]
+\newtheorem{unteog}{Teorema}[chapter]
+\newtheorem{axiomg}{Axioma}[chapter]
+\newtheorem{ejemg}{Ejemplo}[chapter]
+\newtheorem{propog}{Proposición}[chapter]
+
+%-------------------------------------------------Estilo C
+\newtheoremstyle{estiloC}
+{}
+{}
+{}
+{}
+{\color{azulF}\bfseries}%
+{.}{ }
+{}
+%\swapnumbers % Intercambiar número-teorema
+\theoremstyle{estiloC}
+\newtheorem{unteo}{Teorema}[chapter]
+\newtheorem{ejem}{Ejemplo}[chapter]
+\newtheorem{unadefi}{Definición}[chapter]
+\newtheorem{aplica}{Aplicación}
+
+%-------------------------------------------------Estilo D
+\newtheoremstyle{estiloD}
+{}
+{}
+{}
+{}
+{\color{rojoF}\bfseries}%
+{.}{ }
+{}
+%\swapnumbers % Intercambiar número-teorema
+\theoremstyle{estiloD}
+%primer tipo de teoremas
+\newtheorem{propo}{Proposición}[chapter]
+\newtheorem{coro}{Corolario}[chapter]
+\newtheorem{lema}{Lema}
+\newtheorem{axi}{Axioma}[chapter]
+%%%%
+
+
+\newtheorem{notation}{Notación}[chapter]
+
+
+
+%Definiendo operadores matemáticos
+\def\ca{\mathop{\mbox{\normalfont CA}}\nolimits}%Complemento aritmético
+\def\car{\mathop{\mbox{\normalfont card}}\nolimits}%Cardinal de un conjunto
+
+\usepackage{multicol} %para las multicolumnas
+\usepackage{yhmath} %para los decimales periodicos puros
+
+%Emoticones
+%\usepackage{MnSymbol,wasysym}
+\usepackage[citestyle=numeric,style=numeric,backend=biber]{biblatex}
+\addbibresource{bib.bib}
+\begin{document}
+%---------------------Capítulo 0 ---------------------
+\setcounter{chapter}{-1} 
+\chapter{Problemas previos}
+\section{Sistemas de ecuaciones}
+Resolver el sistema de ecuaciones mostrado
+%---------------------Capítulo 1 ---------------------
+\chapter{Espacios Vectoriales}
+
+\section{El porqué del espacio vectorial}
+Desde la etapa escolar y en la academia estudiamos conceptos intuitivos que al pasar por la actividad matemática esta se ordena, sistematiza y toma la forma de un edificio construido con todo el rigor que la matemática puede ofrecer.
+
+Sin embargo aún haciendo o recreando las matemáticas es posible darle una mirada al interior de ellas mismas con las herramientas lógicas que va creando, es decir, su actividad es dirigida no solo hacia el exterior en búsqueda de más conceptos que formalizar y la obtención de aplicaciones; sino hacia dentro de ellas mismas. La abstracción siempre tiene como objetivo la generalización, así que los matemáticos y nosotros nos preguntamos: ¿todo lo que hemos estudiado tiene algún \textit{patrón} guardado en sí, o alguna actividad que subyace en todos sus desarrollos?
+
+Como ya hemos mencionado antes, en el colegio y la academia, hemos visto los polinomios, las funciones, las sucesiones, las matrices, sistemas de ecuaciones, repasamos la geometría analítica en $R^{2}$ y $R^{3}$ si es que de primeros ciclos de universidad se trata y al parecer, según nuestra experiencia, hay algo en común: las operaciones permitidas (o definidas) entre sus elementos. Estamos hablando de la \textit{suma} de estos elementos y la \textit{multiplicación por algún número}. Esta situación es objeto de nuestro análisis y fundará la rama que se conoce como Álgebra Lineal.
+
+Pero, ¿cómo es que se procede en tal \textit{sistematización}? La respuesta inmediata es marcar un concepto de \textit{inicio} que nos permita, a partir de allí, mirar hacia arriba y correr con todos los requisitos que esta generalización requiere. Ya que hemos afirmado la posibilidad de esta tarea. Partimos por preguntarnos: ¿qué concepto envuelve a todos los elementos de los conceptos matemáticos con los que usualmente se trabaja? 
+
+Como buscamos la generalización y ya no habrá distinción alguna, se englobarán a estos elementos con el nombre de \textit{vector} y al conjunto que las representa se le denominará \textit{espacio vectorial}. Notemos de primera vista que ambos nombres están circunscritos a la geometría (analítica si se quiere más precisión), muchos de los nombres acuñados en el Álgebra Lineal siguen este comportamiento pues es por analogía y extensión que se les asigna.
+
+\section{Definición y ejemplos}
+Bien, ahora el Espacio Vectorial es un conjunto que, como se ha discutido al inicio, y ahora formalmente hablando, consta de los siguientes ingredientes: un conjunto $V$ diferente del vacío, una ley de composición interna, un cuerpo (o campo) $\mathds{K}$ y una ley de composición externa.
+
+\begin{unadefi}
+El objeto $(V, +, \mathds{K}, \cdot)$ es un espacio vectorial si y solo si se verifican lo siguiente
+
+\begin{enumerate}[label=\textbf{A\arabic*)}]
+\item \textit{(La suma es una ley de composición interna)} Esto quiere decir que la suma es \textit{cerrada}, formalmente se la denota como:
+\begin{align*}
+V \times V 	&\to V\\
+(u,v) 		&\mapsto u+v.
+\end{align*}
+En muchas ocasiones, para las demostraciones se prefiere:
+\[ v \in V \wedge u \in V \implies u+v \in V. \]
+\item \textit{(La suma es conmutativa)} 
+\hfill $v \in V \wedge \, u \in V \implies u+v =v+u$.
+\item \textit{(La suma es asociativa)}
+\hfill $v \in V \wedge \, u \in V \implies u+v= v+u$. 
+\item \textit{(Existe un neutro para la suma)}
+\hfill $\exists \, \0 \in V \,|\, \forall x \in V : v+ \0= v$.
+\item \textit{(Todo elemento admite inverso aditivo)} 
+\hfill $\forall v \in V, \exists \, u \in V \,|\, v+ u = \0$.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{M\arabic*)}]
+\item \textit{(El producto por un escalar es una ley de composición externa)} Esto quiere decir que el producto de un escalar por un vector es \textit{cerrado}, formalmente se la denota como:
+\begin{align*}
+\mathds{K} \times V	&\to V\\
+(\alpha , v)			&\mapsto \alpha v.			
+\end{align*}
+En muchas ocasiones, para las demostraciones se prefiere:
+\[ \alpha \in \K \wedge v \in V \implies \alpha v \in V.\]
+
+\item \textit{(El producto satisface la asociatividad mixta)}\\
+\textcolor{white}{.}\hfill $\alpha , \beta \in \K \wedge v \in V \implies  \alpha (\beta v)= (\alpha \beta) v.$
+
+\item \textit{(Distribución con respecto a la suma en $\K$)}\\
+\textcolor{white}{.}\hfill $\alpha, \beta \in \K \wedge v \in V \implies (\alpha + \beta )v= \alpha v+ \beta v.$
+
+\item \textit{(Distribución con respecto a la suma en $V$)}\\
+\textcolor{white}{.}\hfill $\alpha \in \K \wedge u,v \in V \implies \alpha (u+v)= \alpha u+ \alpha v.$
+
+\item \textit{(La unidad del cuerpo es neutro para el producto)}\hfill $\forall v \in V : 1 \cdot v= v.$
+\end{enumerate}
+\end{unadefi}
+
+\begin{ejemg}[Espacio vectorial de las funciones]\label{ev.f}
+Si consideramos la cuaterna $(\K^{X}, +, \K, \cdot)$, el símbolo $\K^{X}$ denota al conjunto de todas las funciones con dominio un conjunto $X \neq \emptyset$ y codominio un cuerpo $\K$, o sea:
+\[ \K^{X}= \{ f \,|\, f: X \to \K \}. \]
+En $\K^{X}$ definimos la suma de funciones y el producto de escalares por funciones mediante: 
+
+\begin{itemize}
+\item[\textit{i)}] Si $f$ y $g$ son elementos cualesquiera de $\K^{X}$, entonces $f+g: X \to \K$ es tal que
+\[ (f+g)(x)= f(x)+ g(x), \forall x \in X.\]
+
+\item[\textit{ii)}] Si $\alpha$ es cualquier elemento de $\K$ y $f$ es cualquier elemento de $\K^{X}$, entonces $\alpha f: X \to \K$ es tal que
+\[ (\alpha f)(x)= \alpha f(x), \forall x \in X. \]
+\end{itemize}
+\end{ejemg}
+
+\begin{obs}
+Tanto la suma de funciones con dominio $X \neq \emptyset$ y codominio en $\K$, como el producto de escalares por funciones se llaman leyes de composición punto a punto.
+\end{obs}
+
+\begin{ejemg}[Espacio vectorial de las $n$-uplas de elementos de $\K$]
+Con relación al espacio vectorial de funciones $(\K^{X}, +, \K, \cdot)$ consideremos el caso particular en que $X$ es el intervalo natural inicial $I_{n}$. Toda función $f: I_{n} \to \K$ es una $n$-upla de elementos de $\K$ y escribiendo $\K^{I_n}= \K^{n}$ es $(\K^{n}, +, \K, \cdot)$ el espacio vectorial de las $n$-uplas de elementos de $\K$.
+
+Las definiciones \textit{i)} y \textit{ii)} del ejemplo \ref{ev.f} se traducen aquí de la siguiente manera:
+
+\begin{itemize}
+\item[\textit{i)}] Si $f$ y $g$ denotan elementos de $\K^{n}$, entonces $f+g$ es la función de $I_n$ en $\K$ definida por
+\[ f+g(i)= f(i)+ g(i), \quad \forall i \in I_n. \]
+Acomodando la notación para este caso también se puede expresar como
+\[ c_i= (f+g)(i)= f(i)+ g(i)= a_i + b_i. \]
+Donde $a_i, b_i, c_i$ son las imágenes de $i$-adas por $f,g$ y $f+g$, respectivamente. En consecuencia, las $n$-uplas de elementos de $\K$ se suman componente a componente. Pues si consideramos $u= (a_1, a_2, \ldots , a_n)$ y $v= (b_1, b_2, \ldots , b_n)$ entonces
+\[ u+v= (a_1 + b_1, a_2 + b_2, \ldots , a_n + b_n). \]
+
+\item[\textit{ii)}] Si $\alpha \in \K$ y $f \in \K^{n}$, entonces $\alpha f$ es la función de $I_n$ en $\K$ definida por
+\[ (\alpha f)(i)= \alpha f(i), \quad \forall i \in I_n. \]
+Donde $c_i$ viene a ser la imagen de la $i$-ada por $\alpha f$ y además:
+\[ c_i = (\alpha f)(i)= \alpha f(i)= \alpha a_i. \]
+
+Es decir, el producto de un elemento $\K$ por una $n$-upla se realiza multiplicando en $\K$ a dicho elemento por cada componente de la $n$-upla. Considerando a $u= (a_1, a_2, \ldots , a_n)$ y $\alpha \in \K$ se tiene que
+\[ \alpha u= (\alpha a_1,\alpha a_2, \ldots , \alpha a_n). \] 
+\end{itemize}
+\end{ejemg}
+
+\begin{obs}
+Esta definición no es más que la generalización de los conjuntos que usualmente se utilizan en matemáticas básicas y superiores.
+\end{obs}
+
+\begin{ejemg}[Espacio vectorial de las matrices $n \times m$]
+Particularizando nuevamente con relación al espacio vectorial del ejemplo \ref{ev.f}, consideremos $X= I_n \times I_m$, o sea, el producto cartesiano de los dos intervalos naturales $I_n$ e $I_m$.
+
+Llamamos matriz $n \times m$ con elementos en $\K$ a toda la función
+\[
+f: I_n \times I_m \to \K
+\]
+La imagen del elemento $(ij)$ pertenece al dominio se denota por $a_{ij}$. Esquemáticamente se tiene
+%Hacer gráficos
+
+La matriz queda caracterizada por el conjunto de las imágenes
+\[
+\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1m} \\ 
+a_{21} & a_{22} & \cdots & a_{2m} \\ 
+\vdots & \vdots & \ddots & \vdots \\ 
+a_{n1} & a_{n2} & \cdots & a_{nm}
+\end{array} 
+\]
+y suele escribirse como un cuadro de $mn$ elementos de $\K$ dispuestos en $n$ filas y $m$ columnas. Generalmente
+\[
+A=
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1m} \\ 
+a_{21} & a_{22} & \cdots & a_{2m} \\ 
+\vdots & \vdots & \ddots & \vdots \\ 
+a_{n1} & a_{n2} & \cdots & a_{nm}
+\end{pmatrix}. 
+\]
+Abreviando, puede escribirse
+\[
+A= (a_{ij}) \text{ donde } i=1,2, \ldots, n \text{ y } j=1,2, \ldots ,m.
+\]
+El conjunto de todas las matrices $n \times m$ con elementos en $\K$ es $\K^{I_n \times I_m}$ y se denota mediante $\K^{n \times m}$.
+
+Las definiciones \textit{(i)} y \textit{(ii)} dadas en el primer ejemplo, se traducen aquí de la siguiente manera:
+
+Si $A$ y $B$ son dos matrices de $\K^{m \times n}$, su suma es $C \in \K^{m \times n}$, tal que
+\begin{align*}
+c_{ij}	&= (f+g)(i,j)= f(i,j)+ g(i,j)\\
+		&=a_{ij}+ b_{ij}.
+\end{align*}
+Y el producto del escalar $\alpha \in \K$ por la matriz $A$ es la matriz $C \in \K^{m \times n}$ cuyo elemento genérico $c_{ij}$ es tal que
+\[
+c_{ij}= (\alpha f)(i,j)= \alpha f(i,j)= \alpha a_{ij}.
+\]
+\end{ejemg}
+\begin{obs}
+$(\K^{n\times n}, +, \K, \cdot)$ es el espacio vectorial de las matrices cuadradas, es decir, de $n$ filas y $n$ columnas.
+\end{obs}
+
+\begin{obs}
+El vector nulo del espacio $\K^{n \times m}$ se llama matriz nula, la denotaremos mediante $N$ y estas definida por $n_{ij}=0, \forall i \forall j$. Por otro lado, la matriz inversa aditiva u opuesta de $A= (a_{ij})$ es $B$, cuyo elemento genérico satisface la relación $b_{ij}= -a_{ij}$. Se escribirá entonces $B= -A$.
+\end{obs}
+
+\begin{obs}
+La definición de funciones iguales conlleva a deducir para el caso de las matrices $A=B \Longleftrightarrow a_{ij}= b_{ij} \forall i \forall j$.
+\end{obs}
+
+\begin{ejemg}[Espacio vectorial de las sucesiones]
+Sean $X= \N$ y $\K^{\N}$ el conjunto de todas las funciones de $\N$ en $\K$. Los elementos de $\K^{\N}$ son todas las sucesiones de elementos de $\K$, y retomando lo expuesto en el primer ejemplo resulta que $(\K^{\N}, +, \K, \cdot)$ es un espacio vectorial.
+
+Las definiciones \textit{(i)} y \textit{(ii)} del primer ejemplo se interpretan de la siguiente manera
+\begin{align*}
+c_i &= (f+g)(i)= f(i)+ g(i)= a_i + b_i, &\forall i \in \N\\
+c_i &= (\alpha f)(i)= \alpha f(i)= \alpha a_i, &\forall i \in \N
+\end{align*}
+O sea
+\end{ejemg}
+
+\chapter{Transformaciones lineales}
+
+Ya hemos centrado nuestra atención en los espacios vectoriales. La parte interesante del álgebra lineal es el tema al que nos referimos, presentamos las \emph{transformaciones lineales}.
+
+En este capítulo, con frecuencia necesitaremos otro espacio vectorial, el cual llamaremos $W$, además de $V$. Por lo tanto, nuestras suposiciones actuales son las siguientes:
+
+\begin{notation}{$\mathds{F}$, $V$, $W$}
+\begin{itemize}
+	\item $\mathds{F}$ denota a $\mathds{R}$ o $\mathds{C}$.
+	\item $V$ y $W$ denotan espacios vectoriales sobre $\mathds{F}$.
+\end{itemize}
+\end{notation}
+
+\begin{notation}{$\mathcal{L}\left(V,W\right)$}
+El conjunto de todas las tranformaciones lineales desde $V$  hacia $W$ es denotado por $\mathcal{L}\left(V,W\right)$.
+\end{notation}
+Veamos algunos ejemplos de transformaciones lineales. Asegúrese de verificar que cada una de las funciones definidas a continuación es de hecho una transformación lineal:
+\begin{ejemg}[cero]
+De acuerdo con sus otros usos, el símbolo $0$ denotará la función que toma cada elemento de algún espacio vectorial le añade la identidad aditiva de otro espacio vectorial. Para ser específicos, $0\in\mathcal{L}\left(V,W\right)$ es definida por
+\[
+0v=0.
+\]
+El $0$ en el lado izquierdo de la ecuación de arriba es una función de $V$ hacia $W$, donde el $0$ del lado derecho es la identidad aditiva en $W$. Como es usual, el contexto debería permitirle distinguir entre los muchos usos del símbolo $0$.
+\end{ejemg}
+\begin{ejemg}[identidad]
+La \textbf{\textit{transformación identidad}}, denota por $I$, es la función de un espacio vectorial que toma cada elemento hacia sí mismo. Para ser específicos, $I\in\mathcal{L}\left(V,V\right)$ es definida por
+\[
+Iv=v.
+\]
+\end{ejemg}
+\begin{ejemg}[diferenciación]
+Definimos $D\in\mathcal{L}\left(\mathcal{P}\left(\mathds{R}\right),\mathcal{P}\left(\mathds{R}\right)\right)$ por
+\[
+Dp=p^{\prime}.
+\]
+La afirmación de que esta función es una transformación lineal es de otra forma de establecer el resultado básico sobre diferenciación: ${\left(f+g\right)}^{\prime}=f^{\prime}+g^{\prime}$ y ${\left(\lambda f\right)}^{\prime}=\lambda f^{\prime}$ cuando $f, g$ son diferenciables y $\lambda$ es una constante.
+\end{ejemg}
+\begin{ejemg}[integración]
+Definimos $T\in\left(\mathcal{P}\left(\mathds{R}\right),\mathds{R}\right)$ por
+\[
+Tp=\int_{0}^{1}p(x)\mathrm{d}x
+\]
+La afirmación de que esta función es lineal es otra forma de establecer un resultado básico sobre la integración: la integral de la suma de dos funciones es igual a la suma de las integrales, y la integral de una constante por una función es igual a la constante por la integral de la función.
+\end{ejemg}
+\begin{ejemg}[multiplicación por $x^{n}$]
+Definimos $T\in\left(\mathcal{P}\left(\mathds{R}\right),\mathcal{P}\left(\mathds{R}\right)\right)$ por
+\[
+\left(Tp\right)\left(x\right)=x^{n}p(x)
+\]
+para $x\in\mathds{R}$ y para cualquier $n\in\mathds{N}$.
+\end{ejemg}
+\begin{unadefig}[adición y multiplicación por un escalar en $\mathcal{L}\left(V,W\right)$]
+Suponga que $S, T\in\mathcal{L}\left(V,W\right)$ y $\lambda\in\mathds{F}$. La \textbf{suma} $S+T$ y el \textbf{producto} $\lambda T$ son las transformaciones lineales desde $V$ hacia $W$ definidas por
+\[
+\left(S+T\right)\left(v\right)=Sv+Tv\quad\text{y}\quad\left(\lambda T\right)\left(v\right)=\lambda\left(Tv\right)
+\]
+para todo $v\in V$.
+\end{unadefig}
+Debe verificar que $S+T$ y $\lambda T$ definidas arriba son de hecho transformaciones lineales. En otras palabras, si $S, T\in\mathcal{L}\left(V,W\right)$ y $\lambda\in\mathds{F}$, entonces $S+T\in\mathcal{L}\left(V,W\right)$ y $\lambda T\in\mathcal{L}\left(L,W\right)$.
+
+Debido a que nos tomamos la molestia de definir la suma y la multiplicación por un escalar en $\mathcal{L}\left(V,W\right)$, el siguiente resultado no debería ser una sorpresa.
+
+\begin{propog}[$\mathcal{L}\left(V,W\right)$ es un espacio vectorial]
+Con las operaciones de adición y multiplicación por un escalar como está definida arriba, $\mathcal{L}\left(V,W\right)$ es un espacio vectorial.
+\end{propog}
+
+\begin{unadefig}
+Si $T\in\mathcal{L}\left(U,V\right)$ y $S\in\left(V,W\right)$, entonces el \textbf{producto} $ST\in\mathcal{L}\left(U,W\right)$ está definido por
+\[
+\left(ST\right)\left(u\right)=S\left(T u\right)
+\]
+para $u\in U$.
+\end{unadefig}
+En otras palabras, $ST$ es exactamente la composición usual $S\circ T$ de dos funciones, pero cuando ambas funciones son lineales, muchos matemáticos escribe $ST$ en vez de $S\circ T$. Debería verificar que $ST$ es de hecho una transformación lineal de $U$ hacia $W$ siempre que $TT\in\mathcal{L}\left(U,V\right)$ y $S\in\mathcal{L}\left(V,W\right)$.
+
+Note que $ST$ está definido solo cuando $T$ mapea dentro del dominio de $S$.
+
+\nocite{*}
+\printbibliography[title={Referencias bibliográficas},heading=bibintoc]
+\end{document}
