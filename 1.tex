@@ -91,11 +91,18 @@ Siendo $\psi$ inyectiva, resulta $T(v)  = \lambda v$. Como $v \neq0$, $\lambda$ 
 \begin{proposition}
     Una transformación lineal $T: V \rightarrow V$ y su matriz asociada $A_{T}$ tienen  los mismos autovalores.
 \end{proposition}
-hola carlito
+
+\begin{proof}
+Sea $\lambda$ un autovalor de $T$ y $v \in V$ un autovector correspondiente a $\lambda$, entonces
+\begin{align*}
+    $$ A_{T}(x_{v}) = \psi(T(v)) $$ (por la proposici\'on)
+    $$ & = \psi(\lambda v) = \lambda \psi(v)$$
+    $$ & = \lambda x_{v}$$
+\end{align*}
+Esto prueba que $\lambda$ es un autovector de $A_{T}$.
 
 
-
-
-
-
+\end{proof}
+% https://www.sciencedirect.com/search/advanced?tak=Minimal%20polynomial&show=25&sortBy=relevance
+% https://www.sciencedirect.com/science/article/pii/S1575181318302626
 \end{document}
