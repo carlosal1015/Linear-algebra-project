@@ -1,0 +1,983 @@
+\documentclass[b5paper, 11pt]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[left=2.4cm,right=2.4cm,top=2.4cm,bottom=3cm]{geometry}
+
+\usepackage{helvet}% Fuente helvética 
+\usepackage{calligra}%Para letras caligráficas
+
+\usepackage{graphicx}
+\usepackage{float}
+
+%con respecto a la figura
+\renewcommand{\figurename}{Figura}
+\usepackage{wrapfig}
+\usepackage{here}
+
+%paquete de enumeracion
+\usepackage[shortlabels]{enumitem}
+
+\newcommand{\helv}{\fontfamily{phv}\fontsize{9}{11}\selectfont}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+
+% Definir las marcas: capítulo.sección -------
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{} % borra cabecera y pie actuales
+
+% El número de página
+\fancyhead[LE,RO]{\bfseries\large\thepage} %L=Left, R=right, O=Odd (impar),E=Even págs pares
+% "Marcas" a la derecha e izquierda del encabezado
+\fancyhead[LO]{\helv\rightmark}
+\fancyhead[RE]{\helv\leftmark}
+% Sin raya. Con raya?: cambiar {0} por {0.5pt}
+\renewcommand{\headrulewidth}{0.5pt} 
+
+\fancyfoot[RO]{}
+
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt} % espacio para la raya
+\fancypagestyle{plain}{%
+\fancyhead{} % elimina cabeceras y raya en páginas "plain"
+\renewcommand{\headrulewidth}{0pt}}
+
+%para matematicas
+\usepackage{amsthm,amsmath,amssymb,amsfonts,latexsym,xcolor}
+\usepackage{xlop}
+\usepackage{dsfont}
+\usepackage{calrsfs} %caligrafía matemática
+\usepackage{bm}
+%Definir el vector nulo
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\K}{\mathds{K}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\N}{\mathds{N}}
+
+%para graficos
+\usepackage{xparse}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\usepackage{tcolorbox}
+
+%para cancelar terminos
+\usepackage{cancel} 
+
+\definecolor{azulF}{rgb}{.0,.0,.3} % Azul
+\definecolor{rojoF}{RGB}{212,0,0} % Rojo
+\definecolor{verdeF}{RGB}{0,102,0} % Verde
+\definecolor{naranjaF}{RGB}{255,128,0} % Naranja
+\definecolor{rojoF}{RGB}{153,0,0} %Rojo
+
+%Espacio entre párrafos
+\setlength{\parskip}{2.5mm}
+
+%Renombrando las partes del texto
+\renewcommand{\chaptername}{Capítulo}
+
+%Cambiando el simbolo de demostracion al final
+\renewcommand \qedsymbol {$\blacksquare$}
+
+
+%para los capitulos
+%\usepackage[Glenn]{fncychap}
+%\ChTitleVar{\Large\rm\centering} % sets the style for title
+
+\newtheorem{obs}{Observación}[chapter]
+%-------------------------------------------------Estilo B
+\newtheoremstyle{estiloB}
+{}
+{}
+{}
+{}
+{\color{azulF}\bfseries} % fuente del encabezado
+{} % puntuación
+{\newline} % espacio después del encabezado
+{\thmname{#1}~\thmnumber{\color{azulF} #2}\thmnote{~\color{azulF}(#3)}}
+%%--
+\theoremstyle{estiloB}
+\newtheorem{unadefig}{Definición}[chapter]
+\newtheorem{unteog}{Teorema}[chapter]
+\newtheorem{axiomg}{Axioma}[chapter]
+\newtheorem{ejemg}{Ejemplo}[chapter]
+\newtheorem{propog}{Proposición}[chapter]
+
+%-------------------------------------------------Estilo C
+\newtheoremstyle{estiloC}
+{}
+{}
+{}
+{}
+{\color{azulF}\bfseries}%
+{.}{ }
+{}
+%\swapnumbers % Intercambiar número-teorema
+\theoremstyle{estiloC}
+\newtheorem{unteo}{Teorema}[chapter]
+\newtheorem{unadefi}{Definición}[chapter]
+\newtheorem{aplica}{Aplicación}
+
+%-------------------------------------------------Estilo D
+\newtheoremstyle{estiloD}
+{}
+{}
+{}
+{}
+{\color{azulF}\bfseries}%
+{.}{ }
+{}
+%\swapnumbers % Intercambiar número-teorema
+\theoremstyle{estiloD}
+%primer tipo de teoremas
+\newtheorem{propo}{Proposición}[chapter]
+\newtheorem{coro}{Corolario}[chapter]
+\newtheorem{lema}{Lema}
+\newtheorem{axi}{Axioma}[chapter]
+
+%-------------------------------------------------Estilo E
+\newtheoremstyle{estiloE}
+{}
+{}
+{}
+{}
+{\color{verdeF}\bfseries}%
+{}{ }
+{}
+%\swapnumbers % Intercambiar número-teorema
+\theoremstyle{estiloE}
+\newtheorem{ejem}{Ejemplo}[chapter]
+\newtheorem{ejer}{Ejercicio}[chapter]
+
+%Definiendo operadores matemáticos
+\def\ca{\mathop{\mbox{\normalfont CA}}\nolimits}%Complemento aritmético
+\def\car{\mathop{\mbox{\normalfont card}}\nolimits}%Cardinal de un conjunto
+\newcommand{\sen}{\mathop{\rm sen}\nolimits}
+\newcommand{\nnu}{\mathop{\rm Nu}\nolimits}
+\newcommand{\iim}{\mathop{\rm Im}\nolimits}
+
+
+
+\usepackage{multicol} %para las multicolumnas
+\usepackage{yhmath} %para los decimales periodicos puros
+
+\renewcommand{\contentsname}{Contenido}
+%Emoticones
+%\usepackage{MnSymbol,wasysym}
+
+
+\begin{document}
+\tableofcontents
+%\begin{comment}
+%---------------------Capítulo 0 ---------------------
+%\setcounter{chapter}{-1} 
+%\chapter{Problemas previos}
+%\section{Sistemas de ecuaciones}
+%Resolver el sistema de ecuaciones mostrado
+%---------------------Capítulo 1 ---------------------
+\chapter*{Introducción}
+Una de las principales habilidades que todo estudiante y profesional de Ciencias debe ostentar es la comunicar el contenido de sus trabajos, tanto de forma escrita como expositiva. En nuestro entorno, la gran mayoría de alumnos tiene dificultades en ambos aspectos. La Facultad de Ciencias de la UNI no es ajena a esta problemática y reparte esta labor a sus estudiantes con el fin de formar científicos que afronten los retos que proponen las nuevas tecnologías de información. Tal es el caso del lenguaje de marcado \LaTeX. Con este fin hemos de organizar nuestro trabajo, recolectar las debidas fuentes y exponer los principales conceptos del Álgebra Lineal, sus resultados y aplicaciones. Tales conceptos: el de espacio vectorial, transformación lineal y las matrices, son el motor que da impulso al Álgebra Lineal y sus aplicaciones a diversas ramas del conocimiento humano. Comprender estos conceptos conlleva al estudiante a una mayor capacidad de generalización en otros campos matemáticos, uno de los casos más emblemáticos es el cálculo multivariable. Esta pequeña, pero sustancial exposición, obedece al curso de Álgebra Lineal 1, y las clases expuestas por el PhD. Luis Flores Luyo, profesor a cargo de la asignatura en nuestra casa de estudios.
+
+\hfill Uni, 5 de octubre del 2018.
+
+\chapter{Espacios Vectoriales}
+\section{El porqué del espacio vectorial}
+Desde la etapa escolar y en la academia estudiamos conceptos intuitivos que al pasar por la actividad matemática esta se ordena, sistematiza y toma la forma de un edificio construido con todo el rigor que la matemática puede ofrecer.
+
+Sin embargo aún haciendo o recreando las matemáticas es posible darle una mirada al interior de ellas mismas con las herramientas lógicas que va creando, es decir, su actividad es dirigida no solo hacia el exterior en búsqueda de más conceptos que formalizar y la obtención de aplicaciones; sino hacia dentro de ellas mismas. La abstracción siempre tiene como objetivo la generalización, así que los matemáticos y nosotros nos preguntamos: ¿todo lo que hemos estudiado tiene algún \textit{patrón} guardado en sí, o alguna actividad que subyace en todos sus desarrollos?
+
+Como ya hemos mencionado antes, en el colegio y la academia, hemos visto los polinomios, las funciones, las sucesiones, las matrices, sistemas de ecuaciones, repasamos la geometría analítica en $R^{2}$ y $R^{3}$ si es que de primeros ciclos de universidad se trata y al parecer, según nuestra experiencia, hay algo en común: las operaciones permitidas (o definidas) entre sus elementos. Estamos hablando de la \textit{suma} de estos elementos y la \textit{multiplicación por algún número}. Esta situación es objeto de nuestro análisis y fundará la rama que se conoce como Álgebra Lineal.
+
+Pero, ¿cómo es que se procede en tal \textit{sistematización}? La respuesta inmediata es marcar un concepto de \textit{inicio} que nos permita, a partir de allí, mirar hacia arriba y correr con todos los requisitos que esta generalización requiere. Ya que hemos afirmado la posibilidad de esta tarea. Partimos por preguntarnos: ¿qué concepto envuelve a todos los elementos de los conceptos matemáticos con los que usualmente se trabaja? 
+
+Como buscamos la generalización y ya no habrá distinción alguna, se englobarán a estos elementos con el nombre de \textit{vector} y al conjunto que las representa se le denominará \textit{espacio vectorial}. Notemos de primera vista que ambos nombres están circunscritos a la geometría (analítica si se quiere más precisión), muchos de los nombres acuñados en el Álgebra Lineal siguen este comportamiento pues es por analogía y extensión que se les asigna.
+
+\section{Definición y ejemplos}
+Bien, ahora el Espacio Vectorial es un conjunto que, como se ha discutido al inicio, y ahora formalmente hablando, consta de los siguientes ingredientes: un conjunto $V$ diferente del vacío, una ley de composición interna, un cuerpo (o campo) $\mathds{K}$ y una ley de composición externa.
+
+\begin{unadefi}
+El objeto $(V, +, \mathds{K}, \cdot)$ es un espacio vectorial si y solo si se verifican lo siguiente
+
+\begin{enumerate}[label=\textbf{A\arabic*)}]
+\item \textit{(La suma es una ley de composición interna)} Esto quiere decir que la suma es \textit{cerrada}, formalmente se la denota como:
+\begin{align*}
+V \times V 	&\to V\\
+(u,v) 		&\mapsto u+v.
+\end{align*}
+En muchas ocasiones, para las demostraciones se prefiere:
+\[ v \in V \wedge u \in V \implies u+v \in V. \]
+\item \textit{(La suma es conmutativa)} 
+\hfill $v \in V \wedge \, u \in V \implies u+v =v+u$.
+\item \textit{(La suma es asociativa)}
+\hfill $v \in V \wedge \, u \in V \implies u+v= v+u$. 
+\item \textit{(Existe un neutro para la suma)}
+\hfill $\exists \, \0 \in V \,|\, \forall x \in V : v+ \0= v$.
+\item \textit{(Todo elemento admite inverso aditivo)} 
+\hfill $\forall v \in V, \exists \, u \in V \,|\, v+ u = \0$.
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{M\arabic*)}]
+\item \textit{(El producto por un escalar es una ley de composición externa)} Esto quiere decir que el producto de un escalar por un vector es \textit{cerrado}, formalmente se la denota como:
+\begin{align*}
+\mathds{K} \times V	&\to V\\
+(\alpha , v)			&\mapsto \alpha v.			
+\end{align*}
+En muchas ocasiones, para las demostraciones se prefiere:
+\[ \alpha \in \K \wedge v \in V \implies \alpha v \in V.\]
+
+\item \textit{(El producto satisface la asociatividad mixta)}\\
+\textcolor{white}{.}\hfill $\alpha , \beta \in \K \wedge v \in V \implies  \alpha (\beta v)= (\alpha \beta) v.$
+
+\item \textit{(Distribución con respecto a la suma en $\K$)}\\
+\textcolor{white}{.}\hfill $\alpha, \beta \in \K \wedge v \in V \implies (\alpha + \beta )v= \alpha v+ \beta v.$
+
+\item \textit{(Distribución con respecto a la suma en $V$)}\\
+\textcolor{white}{.}\hfill $\alpha \in \K \wedge u,v \in V \implies \alpha (u+v)= \alpha u+ \alpha v.$
+
+\item \textit{(La unidad del cuerpo es neutro para el producto)}\hfill $\forall v \in V : 1 \cdot v= v.$
+\end{enumerate}
+\end{unadefi}
+
+\begin{ejemg}[Espacio vectorial de las funciones]\label{ev.f}
+Si consideramos la cuaterna $(\K^{X}, +, \K, \cdot)$, el símbolo $\K^{X}$ denota al conjunto de todas las funciones con dominio un conjunto $X \neq \emptyset$ y codominio un cuerpo $\K$, o sea:
+\[ \K^{X}= \{ f \,|\, f: X \to \K \}. \]
+En $\K^{X}$ definimos la suma de funciones y el producto de escalares por funciones mediante: 
+
+\begin{itemize}
+\item[\textit{i)}] Si $f$ y $g$ son elementos cualesquiera de $\K^{X}$, entonces $f+g: X \to \K$ es tal que
+\[ (f+g)(x)= f(x)+ g(x), \forall x \in X.\]
+
+\item[\textit{ii)}] Si $\alpha$ es cualquier elemento de $\K$ y $f$ es cualquier elemento de $\K^{X}$, entonces $\alpha f: X \to \K$ es tal que
+\[ (\alpha f)(x)= \alpha f(x), \forall x \in X. \]
+\end{itemize}
+\end{ejemg}
+
+\begin{obs}
+Tanto la suma de funciones con dominio $X \neq \emptyset$ y codominio en $\K$, como el producto de escalares por funciones se llaman leyes de composición punto a punto.
+\end{obs}
+
+\begin{ejem}[Espacio vectorial de las $n$-uplas de elementos de $\K$]\textcolor{white}{.}\\
+Con relación al espacio vectorial de funciones $(\K^{X}, +, \K, \cdot)$ consideremos el caso particular en que $X$ es el intervalo natural inicial $I_{n}$. Toda función $f: I_{n} \to \K$ es una $n$-upla de elementos de $\K$ y escribiendo $\K^{I_n}= \K^{n}$ es $(\K^{n}, +, \K, \cdot)$ el espacio vectorial de las $n$-uplas de elementos de $\K$.
+
+Las definiciones \textit{i)} y \textit{ii)} del ejemplo \ref{ev.f} se traducen aquí de la siguiente manera:
+
+\begin{itemize}
+\item[\textit{i)}] Si $f$ y $g$ denotan elementos de $\K^{n}$, entonces $f+g$ es la función de $I_n$ en $\K$ definida por
+\[ f+g(i)= f(i)+ g(i), \quad \forall i \in I_n. \]
+Acomodando la notación para este caso también se puede expresar como
+\[ c_i= (f+g)(i)= f(i)+ g(i)= a_i + b_i. \]
+Donde $a_i, b_i, c_i$ son las imágenes de $i$-adas por $f,g$ y $f+g$, respectivamente. En consecuencia, las $n$-uplas de elementos de $\K$ se suman componente a componente. Pues si consideramos $u= (a_1, a_2, \ldots , a_n)$ y $v= (b_1, b_2, \ldots , b_n)$ entonces
+\[ u+v= (a_1 + b_1, a_2 + b_2, \ldots , a_n + b_n). \]
+
+\item[\textit{ii)}] Si $\alpha \in \K$ y $f \in \K^{n}$, entonces $\alpha f$ es la función de $I_n$ en $\K$ definida por
+\[ (\alpha f)(i)= \alpha f(i), \quad \forall i \in I_n. \]
+Donde $c_i$ viene a ser la imagen de la $i$-ada por $\alpha f$ y además:
+\[ c_i = (\alpha f)(i)= \alpha f(i)= \alpha a_i. \]
+
+Es decir, el producto de un elemento $\K$ por una $n$-upla se realiza multiplicando en $\K$ a dicho elemento por cada componente de la $n$-upla. Considerando a $u= (a_1, a_2, \ldots , a_n)$ y $\alpha \in \K$ se tiene que
+\[ \alpha u= (\alpha a_1,\alpha a_2, \ldots , \alpha a_n). \] 
+\end{itemize}
+\end{ejem}
+
+\begin{obs}
+Esta definición no es más que la generalización de los conjuntos que usualmente se utilizan en matemáticas básicas y superiores.
+\end{obs}
+
+\begin{ejem}[Espacio vectorial de las matrices $n \times m$]\textcolor{white}{.}\\
+Particularizando nuevamente con relación al espacio vectorial del ejemplo \ref{ev.f}, consideremos $X= I_n \times I_m$, o sea, el producto cartesiano de los dos intervalos naturales $I_n$ e $I_m$.
+
+Llamamos matriz $n \times m$ con elementos en $\K$ a toda la función
+\[
+f: I_n \times I_m \to \K
+\]
+La imagen del elemento $(ij)$ pertenece al dominio se denota por $a_{ij}$. Esquemáticamente se tiene
+%Hacer gráficos
+
+La matriz queda caracterizada por el conjunto de las imágenes
+\[
+\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1m} \\ 
+a_{21} & a_{22} & \cdots & a_{2m} \\ 
+\vdots & \vdots & \ddots & \vdots \\ 
+a_{n1} & a_{n2} & \cdots & a_{nm}
+\end{array} 
+\]
+y suele escribirse como un cuadro de $mn$ elementos de $\K$ dispuestos en $n$ filas y $m$ columnas. Generalmente
+\[
+A=
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1m} \\ 
+a_{21} & a_{22} & \cdots & a_{2m} \\ 
+\vdots & \vdots & \ddots & \vdots \\ 
+a_{n1} & a_{n2} & \cdots & a_{nm}
+\end{pmatrix}. 
+\]
+Abreviando, puede escribirse
+\[
+A= (a_{ij}) \text{ donde } i=1,2, \ldots, n \text{ y } j=1,2, \ldots ,m.
+\]
+El conjunto de todas las matrices $n \times m$ con elementos en $\K$ es $\K^{I_n \times I_m}$ y se denota mediante $\K^{n \times m}$.
+
+Las definiciones \textit{(i)} y \textit{(ii)} dadas en el primer ejemplo, se traducen aquí de la siguiente manera:
+
+Si $A$ y $B$ son dos matrices de $\K^{m \times n}$, su suma es $C \in \K^{m \times n}$, tal que
+\begin{align*}
+c_{ij}	&= (f+g)(i,j)= f(i,j)+ g(i,j)\\
+		&=a_{ij}+ b_{ij}.
+\end{align*}
+Y el producto del escalar $\alpha \in \K$ por la matriz $A$ es la matriz $C \in \K^{m \times n}$ cuyo elemento genérico $c_{ij}$ es tal que
+\[
+c_{ij}= (\alpha f)(i,j)= \alpha f(i,j)= \alpha a_{ij}.
+\]
+\end{ejem}
+\begin{obs}
+$(\K^{n\times n}, +, \K, \cdot)$ es el espacio vectorial de las matrices cuadradas, es decir, de $n$ filas y $n$ columnas.
+\end{obs}
+
+\begin{obs}
+El vector nulo del espacio $\K^{n \times m}$ se llama matriz nula, la denotaremos mediante $N$ y estas definida por $n_{ij}=0, \forall i \forall j$. Por otro lado, la matriz inversa aditiva u opuesta de $A= (a_{ij})$ es $B$, cuyo elemento genérico satisface la relación $b_{ij}= -a_{ij}$. Se escribirá entonces $B= -A$.
+\end{obs}
+
+\begin{obs}
+La definición de funciones iguales conlleva a deducir para el caso de las matrices $A=B \Longleftrightarrow a_{ij}= b_{ij} \forall i \forall j$.
+\end{obs}
+
+\begin{ejem}[Espacio vectorial de las sucesiones]\textcolor{white}{.}\\
+Sean $X= \N$ y $\K^{\N}$ el conjunto de todas las funciones de $\N$ en $\K$. Los elementos de $\K^{\N}$ son todas las sucesiones de elementos de $\K$, y retomando lo expuesto en el primer ejemplo resulta que $(\K^{\N}, +, \K, \cdot)$ es un espacio vectorial.
+
+Las definiciones \textit{(i)} y \textit{(ii)} del primer ejemplo se interpretan de la siguiente manera
+\begin{align*}
+c_i &= (f+g)(i)= f(i)+ g(i)= a_i + b_i, &\forall i \in \N\\
+c_i &= (\alpha f)(i)= \alpha f(i)= \alpha a_i, &\forall i \in \N
+\end{align*}
+O sea, expresado de una manera más familiar
+\begin{align*}
+(a_1, a_2, \ldots a_n, \ldots)+ (b_1, b_2, \ldots , b_n \ldots)&= (a_1+ b_1, a_2+ b_2, \ldots , a_n+ b_n, \ldots)\\
+\alpha (a_1, a_2, \ldots , a_n, \ldots) &= (\alpha a_1, \alpha a_2, \ldots \alpha a_n \ldots)
+\end{align*}
+\end{ejem}
+
+\begin{ejem}[Funciones de polinomios sobre el cuerpo $\K$]\textcolor{white}{.}\\
+Sea $\K$ un cuerpo y sea $V$ el conjunto de todas las funciones $f$ de $\K$ en $\K$ definida en las formas
+\[
+f(x)= c_0+ c_1x+ c_2x^{2}\cdots + c_nx^{n}
+\]
+donde $c_0, c_1, \ldots c_n$ son escalares fijas de $\K$ (independientes de $x$). Una función de este tipo se llama \textit{función polinomio} sobre $\K$. Sea la adición y la multiplicación escalar definidos como el primer ejemplo y $c$ está en $\K$, entonces $f+g$ son también funciones polinomios.
+\end{ejem}
+
+\begin{ejem}[Espacio de las funciones continuas]\textcolor{white}{.}\\
+Sea $I= [a,b]$, donde $a<b$. Si definimos $C(I)= \{ f :I \to \R | f \text{ es continua} \}$, con las operaciones del ejemplo 1, es un $\R$ espacio vectorial.
+\end{ejem}
+
+\begin{ejem}[Función diferenciable en un punto]\textcolor{white}{.}\\
+El conjunto
+\[
+D= \{ f: \R \to \R | f \text{ es diferenciable en } x=1 \}
+\]
+es un $\R$ espacio vectorial con as operaciones del primer ejemplo.
+\end{ejem}
+
+\begin{ejem}[Operación entre funciones]\textcolor{white}{.}\\
+Si consideramos
+\[
+F= \{ f: \R \to \R \; | \; f' +af= \0 \}
+\]
+es un espacio vectorial con las operaciones del primer ejemplo.
+\end{ejem}
+
+\begin{ejem}[Funciones integrables con restricción]\textcolor{white}{.}\\
+Las funciones integrables sobre el intervalo $[-1,1]$ también conforman un espacio vectorial.
+\end{ejem}
+
+\begin{propo}En todo $\K$ espacio vectorial $V$, se verifica que para todo vector $u, v, w \in V$ y escalar $\lambda \in \K$:
+\begin{enumerate}
+\item El vector nulo ($\0$) es único.
+\item El opuesto de un vector es único.
+\begin{enumerate}
+	\item $0v = \0$.
+	\item $\lambda \0= 0, \quad \lambda \in \K$.
+\end{enumerate}
+\item Si $\lambda v = \0 \implies \lambda = 0 \vee v= \0$.
+\item Si $u+ v = u+ w \implies v= w$.
+\item $-(u+v)= -u +(-v)$
+\end{enumerate}
+\end{propo}
+
+
+\begin{proof}[Prueba 1]Identifiquemos las partes del enunciado:
+\begin{description}
+\item[\textit{hipótesis})] el vector nulo es un elemento de $V$ y
+\item[\textit{tesis})] es único.
+\end{description}
+\textbf{\textit{demostración})} Para garantizar la unicidad asumimos que existe otro elemento $\0 '$ con la misma propiedad\footnote{En general, cuando en matemáticas se desea probar la unicidad de algún objeto, se toma como esquema a la Teoría de Conjuntos, se asume un segundo elemento, es decir, que el conjunto tiene dos elementos. Luego tras un correcto razonamiento se llega a concluir que ambos son iguales, en consecuencia estamos frente a un conjunto unitario o \textit{singletón}.}, es decir, a partir de $u + \0= u$, se llega a $u +\0 '=u $. Entonces podemos afirmar que $\0 '+ \0= \0 '$ y $\0 + \0 '=\0$. Como $\0$ y $\0$ están en $V$ pueden conmutar, es decir, $\0 '+ \0 = \0 + \0 ' $. 
+
+Luego tenemos que $\0 ' =\0 '+ \0 = \0 + \0 ' = \0$, infiriendo que, tratando con elementos iguales, se trata del mismo elemento.
+\end{proof}
+
+\begin{obs}
+Esta proposición, aunque bien sencilla en su enunciado, proporciona una pieza clave en las demás demostraciones. Pues para cualquier elemento $u$ que tenga la propiedad de $u+ w= u$ este será necesariamente el $\0$, es decir $w=0$.
+\end{obs}
+
+\begin{proof}[Prueba 5]Identificando las partes del enunciado
+\begin{description}
+\item[\textit{hipótesis})] $\lambda \in \K$, $v \in V$, $\lambda v= \0$ y
+\item[\textit{tesis})] $\lambda =0 \vee v= \0$.
+\end{description}
+\textbf{\textit{demostración})} La cadena de igualdades
+\begin{align*}
+v 	&= v +\0\\
+	&= v+ (u + (-u))\\
+	&= (v+u) + (-u)\\
+	&= (u+ w)+ (-u) \tag{por hipótesis}\\
+	&= (u + (-u)) + w\\
+	&= \0 + w= w
+\end{align*}
+garantiza la validez de la proposición.
+\end{proof}
+Las demás pruebas se dejan como ejercicio para el lector.
+
+\begin{ejer}
+Determine si el siguiente conjunto obedece a la definición de espacio vectorial.
+\[
+B= \{ (x,y) \in \R^{2} \; | \; x=0 \vee y=0 \}.
+\]
+\end{ejer}
+\begin{proof}[Solución] Procedemos con garantizar la cerradura, es decir
+\begin{align*}
+B \times B &\to B\\
+((x,y), (x',y')) &\mapsto (x,y)+ (x',y').
+\end{align*}
+Como está propuesto en los axiomas, para este caso debemos tener que si
+\[
+(x,y) \in B \wedge (x',y') \in B \implies (x+ x', y+ y,) \in B.
+\]
+Sospechosamente podemos afirmar que esta implicación no siempre se da. Para comprobarlo basta con exponer un \textit{contraejemplo}. A decir $(1,0) \in B$ y $(0,2) \in B$, pero $(1,0)+ (0,2)= (1,2) \not\in B$. Por lo tanto $B$ no es un espacio vectorial.
+\end{proof}
+
+\chapter{Transformaciones Lineales}
+Las transformaciones lineales son funciones que relacionan espacios vectoriales, manteniendo la estructura de dichos espacios.
+\begin{unadefi}
+Sean $V$ y $W$ dos espacios vectoriales sobre el cuerpo $F$. Una \textit{transformaci\'on lineal} de $V$ en $W$, es una funci\'on $T: V \to W $ que verifica:
+\[
+T(c\alpha +\beta) = cT(\alpha) + T(\beta)
+\]
+para todos los vectores $\alpha$ y $\beta$ de $V$ y todos los escalares $c$ de $F$.
+\end{unadefi}
+
+\begin{unteo}
+Sea $V$ un espacio vectorial de dimensi\'on finita sobre el cuerpo $F$, sea $\{\alpha_{1}, \ldots ,\alpha_{n}\}$ una base ordenada de $V$. Sean $W$ un espacio vectorial sobre el mismo cuerpo $F$ y $\beta_{1},\ldots ,\beta_{n}$ vectores cualesquiera de $W$. Entonces existe una \'unica transformaci\'on lineal $T$ de $V$ en $W$ tal que
+\[
+T(\alpha_{j}) = \beta_{j} ; j=1,2,\ldots ,n 
+\]
+\end{unteo}
+
+\begin{unteo}
+Sean $V$ y $W$ dos espacios vectoriales sobre el cuerpo $F$ y sea $T$ una transformaci\'on lineal de $V$ en $W$. El \textit{espacio nulo} de $T$ es el conjunto de todos los vectores $\alpha$ de $V$ tales que $T(\alpha) = \0$. Si $V$ es de dimensi\'on finita, el \textit{rango} de $T$ es la dimensi\'on de la imagen de $T$ y la \textit{nulidad} de $T$ es la dimensi\'on del espacio nulo de $T$.
+\end{unteo}
+
+He aquí uno de los resultados m\'as importantes del Álgebra Lineal.
+
+\begin{unteo}
+ Sean $V$ y $W$ espacios vectoriales sobre el cuerpo $F$ y sea $T$ una transformaci\'on lineal de $V$ en $W$. Supóngase que $V$ es de dimensi\'on finita, entonces:
+\[
+\dim (\iim T) + \dim (\nnu T)= \dim (V).
+\]
+\end{unteo}
+\begin{unteo}
+Si $A$ es una matriz $mxn$ de elementos en el cuerpo $F$, entonces
+\[
+\iim A= \text{ rango de las columna de } A.
+\]
+\end{unteo}
+
+\section{\'Algebra de las Transformaciones Lineales}
+En el estudio de las transformaciones lineales de $V$ en $W$ es de fundamental importancia que el conjunto de estas transformaciones herede una estructura natural de espacio vectorial. El conjunto de las transformaciones lineales de un espacio $V$ en si mismo tiene una estructura algebraica mayor, pues la composici\'on ordinaria de funciones da una \textit{multiplicaci\'on} de tales transformaciones. Se analiza esas ideas en esta secci\'on.
+
+\begin{unteo}
+Sean $V$ en $W$ espacios vectoriales sobre el cuerpo $F$ y Sean $T$ y $U$ transformaciones lineales de $V$ en $W$, La funci\'on $(T+U)$ es definida por
+\[
+(T+U)(\alpha) = T(\alpha)+U(\alpha)
+\]
+es una transformaci\'on lineal de $V$ en $W$. Si $c$ es cualquier elemento de $F$, la funci\'on $(cT)$ definida por:
+\[
+(cT)(\alpha) = c(T\alpha).
+\]
+Es una transfromaci\'on lineal de $V$ en $W$. El conjunto de todas las transformaciones lineales de $V$ en $W$, junto con la adici\'on y la multiplicaci\'on escalar aquí definidas, es un espacio vectorial sobre el cuerpo $F$.
+\begin{unteo}
+Sea $V$ un espacio vectorial de dimensi\'on finita $n$ sobre el cuerpo $F$, y sea $W$ un espacio vectorial de dimensi\'on finita $m$ sobre el cuerpo $F$. Entonces el espacio $L(V,W)$ es de dimensi\'on finita y tiene dimensi\'on $mn$.
+\end{unteo}
+
+\begin{unteo}
+ Sean $V,W$ y $Z$ espacios vectoriales sobre el cuerpo $F$. Sea $T$ una transformaci\'on lineal de $V$ en $W$ y $U$ una transformaci\'on lineal de $W$ en $Z$. Entonces la funci\'on compuesta $UT$ definida por $UT(\alpha) = U(T(\alpha))$ es una transformaci\'on lineal de $V$ en $Z$.
+\end{unteo}
+\section{Operador lineal}
+\begin{unadefi}
+Si $V$ es un espacio vectorial sobre el cuerpo $F$, un \textit{operador lineal} sobre $V$ es una transformaci\'on lineal de $V$ en $V.$
+\end{unadefi}
+Cuando $V = W = Z$, en el que $U$ y $T$ son operadores lineales del espacio $V$, se ve que la composici\'on $UT$ es tambien un operador lineal sobre $V$. Asi, el espacio $L(V,V)$ tiene una \textit{multiplicaci\'on} definida por composici\'on. En este caso el operador $TU$ tambi\'en esta definido, y debe observarse que en general $UT \ne TU$, es decir $UT-TU \ne 0$. Se ha de advertir de manera especial que si $T$ es un operador lineal sobre $V$, entonces se puede componer $T$ con $T$. Se usar\'a para ello la notaci\'on $T^{2} \ne TT$, y en general $T^{n} = T\ldots T(n-veces)$ para $n = 1,2,\ldots$ se define $T^{0} = I$ si $T \ne 0$.
+
+\begin{lema}
+Sea $V$ un espacio vectorial sobre el cuerpo $F$ y sean $U,T_{1},T_{2}$ operadores lineales sobre $V$, ademas $c$ un elemento de $F$. 
+\begin{itemize}
+\item[a.] $IU = UI = I$
+\item[b.] $U(T_{1} + T_{2}) = UT_{1} + UT_{2}; (T_{1} + T_{2})U = T_{1}U + T_{2}U$ 
+\item[c.] $c(UT_{1}) = (cU)T_{1} = U(cT_{1})$ 
+\end{itemize}
+\end{lema}
+
+\begin{unteo}
+Sean $V$ y $W$ dos espacios vectoriales sobre el cuerpo $F$ y sea $T$ una transformaci\'on lineal de $V$ en $W$. Si $T$ es inversible , entonces la funci\'on reciproca $T^{-1}$ es una transfromaci\'on lineal de $W$ sobre $V$.
+\end{unteo}
+
+\begin{unteo}
+Sea $T$ una transformaci\'on lineal de $V$ en $W$. Entonces $T$ es no singular si, y solo si, $T$ aplica cada subconjunto linealmente independiente de $W$.Sean $V$ y $W$ espacios vectoriales de dimenci\'on finita sobre el cuerpo $F$ tal que $\dim V = \dim W$. Si $T$ es una transformaci\'on lineal de $V$ en $W$, las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+\item[i.] $T$ es inversible.
+\item[ii.] $T$ es no singular. 
+\item[iii.] $T$ es sobreyectiva, eso es la imagen de $T$ es $W$. 
+\end{enumerate}
+\end{unteo}
+
+\begin{unadefi}
+Un \textit{grupo} consta de lo siguiente:
+\begin{enumerate}
+\item[i.] Un conjunto $G$.
+\item[ii.] Una correspondencia(u operaci\'on) que asocia a cada par de elementos $x,y$ de $G$, un elemento $xy$ de $G$ de tal modo que: 
+\end{enumerate}
+\begin{enumerate}
+\item[a.] $x(yz) = (xy)z$ para todo $x,y,z$ en $G$\textit{(asociatividad)}.
+\item[b.] Existe un elemento $e$ en $G$ tal que $ex = xe = x$ para todo $x$ de $G$.
+\item[c.] A cada elemento $x$ de $G$ le corresponde un elemento $x^{-1}$ en $G$ tal que $xx^{-1} = x^{-1}x = e$. 
+\end{enumerate}
+\end{unadefi}
+
+\section{Isomorfismo}
+Si $V$ y $W$ son espacios vectoriales sobre el cuerpo $F$, toda transformaci\'on lineal $T$ de $V$ en $W$ sobreyectiva e inyectiva, se dice \textit{isomorfismo de $V$ sobre $W$}.
+Si existe un isomorfismo de $V$ sobre $W$, se dice que $V$ es \textit{isomorfo} a $W$.
+Obs\'ervese que $V$ es trivialmente isomorfo a $V$, ya que el operador identidad es un isomorfismo de $V$ sobre $V$. Tambi\'en si $V$ es isomorfo a $W$ por un isomorfismo $T$, entonces $W$ es isomorfo a $V$, pues $T^{-1}$ es un isomorfismo  de $W$ sobre $V$. En resumen, el isomorfismo es una relaci\'on de equivalencia sobre la clase de espacios vectoriales. Si existe un isomorfismo de $V$ sobre $W$, se dir\'a aveces que $V$ y $W$ son isomorfos, en vez de que $V$ es isomorfo a $W$. Ello no ser\'a motivo de confusi\'on porque $V$ es isomorfo a $W$, si y solo si $W$ es isomorfo a $V$.
+\end{unteo}
+
+\begin{unteo}
+Todo espacio vectorial de dimensi\'on $n$ sobre el cuerpo $F$ es isomorfo al espacio $F^{n}$.
+\end{unteo}
+
+\section{Transformaciones y matrices}
+Sea $V$ un espacio vectorial de dimenci\'on $n$ sobre el cuerpo $F$, y sea $W$ un espacio vectorial de dimensi\'on $m$ sobre $F$. Sea $B = \{\alpha_{1},\ldots ,\alpha_{n} \} $ una base ordenada de $V$, y $B' =\{\beta_{1},...,\beta_{m}\} $ una base ordenada de $W$. Si $T$ es cualquier transformaci\'on lineal de $V$ en $W$, entonces $T$ esta determinada por su efecto sobre los vectores $\alpha_{j}$. Cada uno de los $n$ vectores $T(\alpha_{j})$ se expresa de manera \'unica como una combinaci\'on lineal.
+\[
+T(\alpha_{j}) = \sum_{i=1}^{m}A_{ij}B_{i}
+\]
+de los vectores $\beta_{i}$, por los escalares $A_{1j}, \ldots , A_{mj}$ son las coordenadas de $T_{\alpha_{j}}$ en la base ordenada $B'$. Por consiguiente, la transformaci\'on $T$ est\'a determinada por los $mn$ escalares  $A_{ij}$ mediante la expresi\'on anterior mencionada. La matriz $mn$, $A$ definida por $A(i,j) = A_{ij}$ se llama \textit{matriz de $T$ respecto al par de bases ordenadas $B$ y $B'$ }, la tarea inmediata es comprender claramente como la matriz $A$ determina la transformaci\'on lineal $T$. 
+
+\begin{unteo}
+Sean $V$ un espacio vectorial de dimensi\'on $n$ sobre el cuerpo $F$. Sean $B$ una base ordenada de $V$ y $B'$ una base ordenada de $w$. Para cada transformaci\'on lineal $T$  de $V$ en $W$ y en el conjunto de todas las matrices $m x n$, $A$ cuyos elementos pertenecen a $F$ ,tal que:
+\[
+\left[T_{\alpha}\right]_{B'} = A\left[\alpha\right]_{B}
+\]
+para todo vector $\alpha$ en $V$, ademas, $ T \rightarrow A\ $ es una correspondencia biyectiva entre el conjunto de todas las transformaciones lineales de $V$ en $W$ y el conjunto de todas las matrices $mxn$ sobre el cuerpo $F$. La matriz $A$ asociada, que esta asociada a $T$ en el teorema 10 se llama la \textit{matriz de $T$ respecto a las bases ordenadas $B$ , $B'$}.
+\end{unteo}
+
+\begin{unteo}
+Sea $V$ un espacio vectorial de dimensi\'on $n$ sobre el cuerpo $F$. Para cada par de bases ordenadas $B,B'$ de $V$ y $W$ , respectivamente ,la funci\'on que asigna a una transformaci\'on lineal $T$ su matriz respecto a $B,B'$ es un isomorfismo entre el espacio  $L(V,W)$ y el espacio de todas las matrices $mxn$ sobre el cuerpo $F$.
+\end{unteo}
+
+\begin{unteo}
+Sean $V,W$ y $Z$ espacios vectoriales de dimensi\'on finita sobre el cuerpo $F$, sea $T$ una transformaci\'on lineal de $V$ en $W$ y $U$ una transformaci\'on lineal de $W$ en $Z$. Si $M,B',B''$ son las bases ordenadas de los espacios $V,W,Z$ respectivamente, y si $A$ es la matriz de $T$ respecto al par $B,B' $ Y $M$ es la matriz de $T$ respecto al par  $M,B'$ y $M$ es la matriz de la composici\'on $UT$ respecto al par $M,B''$ es la matriz producto $C = MA$.
+\end{unteo}
+\begin{unteo}
+Sea $V$ un espacio vectorial de dimensi\'on finita sobre el cuerpo $F$ y sean:
+\begin{align*}
+B &= \{\alpha_{1},\ldots ,\alpha_{n}\}\\
+B' &= \{\alpha_{1}',\ldots ,\alpha_{n}'\}
+\end{align*}
+Dos bases ordenadas de $V$. Sup\'ongase que $T$ es un operador lineal sobre $V$. Si $P = \left[ p_{1},\ldots ,p_{n}\right]$ es la matriz $nxn$ de columnas $P_{j} = \left[ \alpha_{j}'\right]_{B'}$, entonces:
+\[
+\left[ T \right]_{B'} = P^{-1}\left[ T \right]_{B}P
+\]
+de otra manera, si $U$ es el operador lineal sobre $V$ definido por $U_{\alpha_{j}} = \alpha_{j}'$ ; para todo  $j = 1,2,\ldots ,n$ entonces:
+\[
+\left[T\right]_{B'} = \left[U\right]_{B}^{-1}\left[T\right]_{B}\left[U\right]_{B}
+\]
+\end{unteo}
+\begin{unadefi}
+Sean $A$ y $B$ dos matrices(cuadradas) $nxn$ sobre el cuerpo $F$. Se dice que $B$ es semejante a $A$ sobre $F$ si existe una matriz inversible $n \times n$, $P$, sobre  $F$ tal que $B = P^{-1}AP.$
+\end{unadefi}
+
+De acuerdo con el teorema mencionado, se tiene que: si $V$ es un espacio vectorial de dimenci\'on $n$ sobre el cuerpo $F$ y $B,B'$ son 2 bases ordenadas de $V$, entonces para todo operador lineal de $T$ sobre $V$, la matriz $B = \left[T\right]_{B'}$ es semejante a la matriz $A = \left[T\right]_{B}$. El razonamiento tambi\'en es v\'alido a la inversa. Supongase que $A$ Y $B$ son matrices $nxn$ y que $B$ es semejante a $A$. Sea $V$ cualquier espacio de dimenci\'on $n$ sobre $F$ y sea $B$ una base ordenada de $V$. Sea $T$ el operador lineal sobre $V$ que esta representado en la base $B$ por $A$. Si $B = PAP^{-1}$, sea $B'$ la base ordenada de $Y$ obtenida de $B$ por $P$, es decir: 
+\[
+\alpha_{j}' = \sum_{i=1}^{n}P_{ij}\alpha_{j}
+\]
+\section{Funciones Lineales}
+Si $V$ es un espacio vectorial sobre el cuerpo $F$, una transformaci\'on lineal $f$ de $V$ en el cuerpo de los escalares $F$ se llama tambi\'en \textit{una funci\'on lineal} sobre $V$. Si se comienza desde el principio, esto quiere decir que $f$ es una funci\'on de $V$ en $F$ tal que:
+\[
+f(c\alpha + \beta) = cf(\alpha) + f(\beta) 
+\]
+para todos los vectores $\alpha$ y $\beta$ de $V$ y todos los escalares $c$ de $F$. El concepto de funci\'on lineal es importante para el estudio de los espacios vectoriales de dimensi\'on finita, pues ayuda a organizar y clasificar el estudio de los subespacios, las ecuaciones lineales y las coordenadas.
+
+Ahora si $V$ es un espacio vectorial, el conjunto de todos los funcionales lineales sobre $V$ forman, naturalmente, un un espacio vectorial. Es el espacio $L(V,F)$. Se designa este espacio por $V^{*}$ y se le llama \textit{espacio dual} de $V$:
+\[
+V = L(V,F).
+\]
+Si $V$ es de dimensi\'on finita se puede obtener una descripci\'on muy explicita del espacio dual $V^{*}$. Por el teorema 6  sabemos algo acerca del espacio $V^{*}$.
+\[
+\dim V^{*} = \dim V
+\]
+De esta forma se obtiene de $B$ un conjunto de n funciones lineales distintos $f_{1},...f_{n}$ sobre $V$. Estos funcionales son también linealmente independientes, pues supóngase que:
+\begin{align*}
+f &=\sum_{i=1}^{n}c_{i}f_{i}\\
+\implies f(\alpha_{i}) &= \sum_{i=1}^{n}c_{i}f_{i}(\alpha_{i})\\
+f(\alpha_{i}) &= \sum_{i=1}^{n}c_{i}\delta_{ij}\\
+f(\alpha_{i}) &= c_{j}
+\end{align*}
+En particular si $f$ es funcional cero, $f(\alpha_{j}) = 0$ para cada $j$ y por lo tanto los escalares $c_{j}$ son todos cero. Entonces los $f_{i}$ son n funcionales linealmente independientes, y como se sabe que $V^{*}$ tiene dimensi\'on n, deben ser tales que $B^{*} = \{f_{1},\ldots ,f_{n}\}$ es una base de $V^{*}$. Esta base se llama \textbf{base dual} de $B$.
+
+\begin{unteo}
+Sea $V$ un espacio vectorial de dimensi\'on finita sobre el cuerpo $F$ y sea $B' = \{f_{1}, \ldots ,f_{n}\} $ es una base de $V^{*}$ tal que $f_{i}(\alpha_{j} = \delta_{ij}$. Para cada funcional lineal $f$ sobre $V$ se tiene.
+\[
+f = \sum_{i=1}^{n}f(\alpha_{i})f_{i}
+\]
+y para cada vector $\alpha$ de $V$ se tiene:
+\[
+\alpha = \sum_{i=1}^{n}f_{i}(\alpha)\alpha_{i}
+\]
+\end{unteo}
+\begin{unadefi}
+Si $V$ es un espacio vectorial sobre el cuerpo $F$ y $S$ es un subconjunto de $V$, el \textit{anulador} de $S$ es el conjunto $S^{0}$ de funciones lineales $f$ sobre $V$ tales que $f(\alpha) = 0$ para todo $\alpha$ de $S$.
+\end{unadefi}
+
+\begin{unteo}
+Sea $V$ un esoacio vectorial de dimensi\'on finita sobre el cuerpo $F$ y sea $W$ un subespacio de $V$ entonces :
+\[ \dim W + \dim W^{0}  = \dim V \]
+\end{unteo}
+
+\section{Transpuesta de una transformaci\'on lineal}
+Supóngase que se tiene 2 espacios vectoriales $V$ y $W$ sobre el cuerpo $F$ y una transformaci\'on lineal $T$ de $V$ en $W$, con. Entonces $T$ induce una transformaci\'on lineal de $W^{*}$ en $V^{*}$, como sigue. Sup\'ongase que $g$ es funcional lineal en $W$, y sea:
+\[
+f(\alpha) = g(T(\alpha))
+\]
+para cada $\alpha$ en $V$. Entonces la ecuci\'on mencionada describe una funci\'on $f$ de $V$ en $F$ que es la composici\'on de $T$(funci\'on de $T$ en $W$), con $g$(funcion de $W$ en $F$).
+\begin{unteo}
+Sean $V$ y $W$ espacios vectoriales sobre el cuerpo $F$, para toda transfromaci\'on lineal $T$de $V$ en $W$, existe una \'unica transformaci\'on lineal $T^{t}$ de $W^{*}$ en $V^{*}$ tal que: 
+\[
+(Tg)(\alpha) = g(T\alpha)
+\]
+para todo $g$ de $W^{*}$ y todo $\alpha$ de $V$.
+A $T^{t}$ se le llama \textit{transpuesta} de $T$. Esta transformaci\'on $T^{t}$ también se le llama a menudo adjunta de $T$, pero no usaremos esa terminolog\'ia.
+\end{unteo}
+\begin{unteo}
+Sean $V$ en $W$ espacios vectoriales sobre el cuerpo $F$ y sea $T$ una transformaci\'on  lineal de $V$ en $W$. El espacio nulo de $T^{t}$ es el anulador de la imagen de $T$. si $V$ y $W$ son de dimensi\'on finita, entonces:
+\begin{enumerate}
+\item[i.] rango$(T^{t})$ = rango$(T)$.
+\item[ii.] La imagen de $T^{t}$ es el anulador del espacio nulo de $T$.
+\end{enumerate} 
+\end{unteo}
+
+\begin{unteo}
+Sean $V$ y $W$ espacios vectoriales de dimensi\'on finita sobre el cuerpo $F$. Sea $B$ una base ordenada de $V$ con base dual $B^{*}$, y sea $B'$ una base ordenada de $W$ con base dual $B'^{*}$. Sea $T$ una transformaci\'on lineal de $V$ en $W$; sea $A$ la matriz de $T$ respecto a las bases $B$, $B'$ y sea $B$ la matriz de $T^{t}$ respecto a $B'^{*} , B^{*}$ . Entonces:
+\[
+B_{ij} = A_{ji}
+\]
+\end{unteo}
+\begin{unadefi}
+Si $A$ es una matriz $m$x$n$ sobre el cuerpo $F$, la \textit{transpuesta} de $A$, es la matriz $n$x$m$, $A^{t}$, definida por
+\[
+A_{ij}^{t} = A_{ji}.
+\]
+\end{unadefi}
+El teorema 19 nos dice que si $T$ es una transformac\'on lineal de $V$ en $W$, cuya matriz con respecto a un par de bases es $A$, entonces la transformaci\'on transpuesta $T^{t}$ esta representada, en el par de bases dual, por la matriz transpuesta $A^{t}$.
+
+\begin{unteo}
+Sea $A$ cualquier matriz $m x n$ sobre el cuerpo $F$. Entonces el rango de filas de $A$ es igual al rango de columnas de $A$.
+\end{unteo}
+Ahora vemos que si $A$ es una matriz $mxn$ sobre $F$ y $T$ es la transformaci\'on lineal de $F^{n}$ en $F^{m}$, entonces:
+\begin{center}
+rango$(T)$ = rango de filas $(A)$ = rango de columna $(A)$ 
+\end{center}
+y se dir\'a simplemente que este n\'umero es el rango de $A$.
+%\end{comment}
+
+\chapter{Matrices}
+\section{Conceptos generales}
+Los coeficientes de un sistema lineales, tal como
+\begin{align*}
+ax + by &= r \\
+cx + dy &= s 
+\end{align*}
+revelan un ordenamiento rectangular de n\'{u}meros, el cual es 
+\[\begin{bmatrix}
+a & b \\
+c & d \\
+\end{bmatrix}\]
+al a partir de ahora llamaremos \textit{matriz}. En general, una matriz $m \times n$, o sea de $m$ filas y $n$ columnas, es un ordenamiento rectangular de n\'{u}meros,así
+\[\begin{bmatrix}
+a_11 & a_12  \cdots & a_1n \\
+a_21 & a_22  \cdots & a_2n \\
+\vdots &  & \vdots   \\
+a_m1  & \cdots   & a_mn    \\    
+\end{bmatrix}\]
+donde la ubicaci\'{o}n de los coeficientes $a_ij$ es \'{u}nica. Por comodidad, las matrices se denotar\'{u}n con las letras may\'{u}sculas como A,B,C, etc. y sus componentes con letras min\'{u}sculas. As\'{i} $A = [a_{ij}], B = [b_{ij}], C = [c_{ij}], \ldots$
+
+Al conjunto total de matrices m x n con coeficientes en el cuerpo  $\K$, lo denotaremos con $ \K^{m \times n}$. En particular $\K^{m \times 1}$ es el conjunto de vectores columna y $\K^{1 \times n}$ el conjunto de los vectores fila. El conjunto $\K^{m \times n}$ esta provisto de las operaciones de suma y producto por un escalar, en forma an\'{a}loga a $\K^{n}$, como mostramos a continuaci\'{o}n.\\
+   Dadas $ A = [a_ij],y B = [b_ij]$ en $\K^{m \times n}$, la suma y el producto por un escalar $\lambda \in \K$ son
+\[
+ A+B = [a_ij + b_ij], \lambda A = [\lambda a_ij]
+\]
+con estas operaciones $\K^{m times n}$ es un $\K$-espacio vectorial, donde el opuesto de A es
+\[
+-A = [-a_ij]
+\]
+y la matriz cero es $0 = [a_{ij}]$, donde $a_{ij} = 0$ para todo i,j. Por otro lado, bajo ciertas restricciones, existe el producto de matrices, definido para $A = [a_{ij}]\in \K^{m \times n}$ y $B = [b_{ij}] \in \K ^{n \times p}$, por $AB = [c_{ij}] \in  \K^{m  \times p}$ donde $$ c_{ik} = \sum_{i=1}^n a_{ij}b_{jk},\; \text{ para } \;, {i=1},\ldots,m,k=1,\ldots ,p.$$
+Por ejemplo para 
+\[
+A = \left( \begin{array}{lcr}
+a_{11} &a_{12}  \\
+a_{21} &a_{22}  \\
+\end{array}
+\right),
+\quad
+B = \left( \begin{array}{lcr}
+b_{11} &b_{12} &b_{13}  \\
+b_{21} &b_{22} &b_{23}  \\
+\end{array}
+\right)
+\]
+\[
+AB = \left( \begin{array}{lcr}
+a_{11}b_{11}+a_{12}b_{21} &a_{11}b_{12}+a_{12}b_{22} &a_{11}b_{13}+a_{12}b_{23}  \\
+a_{21}b_{11}+a_{22}b_{21} &a_{21}b_{12}+a_{22}b_{22} &a_{21}b_{13}+a_{22}b_{23}  \\
+\end{array}
+\right)
+\]
+El producto de matrices, cuando es posible, goza de las siguientes propiedades:
+\begin{enumerate}
+\item $A(BC) = (AB)C$
+\item $A(B+C) = AB + AC$ y $(B+C)A = BA + CA$
+\item $AB \not= BA$ en general.
+\end{enumerate}
+\begin{equation*}
+\begin{bmatrix} 
+ 1 &  2 \\
+ 0 & -1 \\
+
+\end{bmatrix}
+\begin{bmatrix}
+ 1 & 2 \\
+-1 & 3 \\
+
+\end{bmatrix}  
+\not=
+\begin{bmatrix} 
+ 1 &  2 \\
+-1 &  3 \\
+
+\end{bmatrix}
+\begin{bmatrix}
+ 1 &  2 \\
+ 0 & -1 \\
+\end{bmatrix}
+\end{equation*}
+El espacio $\K^{n \times n}$ goza de importantes propiedades. El producto de dos matrices en $\K^{n \times n}$ es siempre posible; adem\'{a}s se puede definir el concepto de matriz inversible, como veremos luego. Para esto \'{u}ltimo, ha de definirse la identidad para el producto de matrices. Para cada entero $n \geq 1$, existe una matriz cuadrada, \textit{matriz identidad}, definida por $I=[\delta_{ij}]$ donde $\delta_{ij}$ es el delta de Kronecker. Por ejemplo: si $n=1$, $I=[1]$ y $n=2$.
+\begin{equation*}
+ I = \begin{bmatrix}
+ 1 &  0 \\
+ 0 &  1 \\
+\end{bmatrix}
+\end{equation*}
+La matriz identidad tiene la propiedad $AI = IA = A$, para toda la matriz $A  \in \K^{n \times n}$, se mencionan las siguientes posibilidades:
+\begin{itemize}
+\item \textit{Diagonal}, si $a_{ij} = 0$ para $i \not= j$
+\item \textit{Triangular superior}, si $a_{ij} = 0$ para $ j < i$
+\item \textit{Triangular inferior}, si $a_{ij} = 0$ para $ j > i$
+\item \textit{Sim\'{e}trica}, si $A^t = A$
+\item \textit{Antisim\'{e}trica}, si $A^t = -A$
+\item \textit{Hermitiana}, si $A^* = A (\K =\mathds{C})$
+\item \textit{Ortogonal}, si $A^tA = I$
+\item \textit{Idempotente}, si $A^2 = A$
+\item \textit{Nilpotente}, si $A^p = 0$ para alg\'{u}n entero $q > 1$.
+\end{itemize}
+
+\section{Matrices elementales}
+Existen algunas operaciones sobre las filas y las columnas de una matriz, llamadas operaciones elementales fila y operaciones elementales columna, respectivamente, que facilitan los c\'{a}lculos cuando se desea resolver un sistema de ecuaciones lineales, hallar la inversa de una matriz, determinar el rango o calcular el determinante de la misma, etc. En cuando a las operaciones elementales fila, son esencialmente tres y consisten en:
+\begin{enumerate}
+\item Multiplicar una fila (de una matriz) por un n\'{u}mero distinto de cero.
+\item Sumar a una fila (de una matriz) el m\'{u}ltiplo de otra fila.
+\item Intercambiar dos filas (de una matriz).
+\end{enumerate}
+Estas operaciones no son sino el efecto de haber multiplicado a la izquierda la matriz dada por cierto tipo de matrices, llamadas matrices elementales. La multiplicaci\'{o}n  por la derecha de estas matrices elementales produce las operaciones elementales columna. Los tres tipos de matrices elementales en $\K^{n \times n}$ son:
+\begin{enumerate}
+\item $E_i(\lambda)$: matriz obtenida de la identidad I, multiplicando la i-\'{e}sima fila por $\lambda \epsilon \mathbb{K}, \lambda \not= 0 (1 \leqq i  \leqq n) $
+Por ejemplo, para n=2, existen dos matrices de este tipo:
+\begin{equation*}
+ E_1(\lambda) = \begin{bmatrix}
+ \lambda &  0  \\
+ 0 &  1  \\
+\end{bmatrix},
+ E_2(\lambda ) = \begin{bmatrix}
+ 1 &  0  \\
+ 0 &  \lambda  \\
+\end{bmatrix}
+,  \lambda \not= 0
+\end{equation*}
+Para n =3, existen tres matrices de este tipo:
+\begin{equation*}
+ E_1(\lambda) = \begin{bmatrix}
+ \lambda &  0 & 0 \\
+ 0 &  1 & 0 \\
+ 0 &  0 & 1 \\
+\end{bmatrix},
+ E_2(\lambda) = \begin{bmatrix}
+ 1 &  0 & 0 \\
+ 0 &  \lambda & 0 \\
+ 0 &  0 & 1 \\
+\end{bmatrix},
+ E_3(\lambda) = \begin{bmatrix}
+ 1 &  0 & 0 \\
+ 0 &  1 & 0 \\
+ 0 &  0 & \lambda \\
+\end{bmatrix},\lambda \not= 0
+\end{equation*}
+\item $E_{ij}(\lambda)$: matriz obtenida de la igualdad I, sumando a la i-\'{e}sima fila, la j-\'{e}sima fila multiplicada por $\lambda, donde, i \not= j$
+Por ejemplo, para n=2, existen dos tipos de matrices de este tipo:
+\begin{equation*}
+E_12(\lambda) = \begin{bmatrix}
+ 1 &\lambda   \\
+ 0 &  1  \\
+\end{bmatrix},
+ E_21(\lambda ) = \begin{bmatrix}
+ 1 &  0  \\
+ \lambda & 1  \\
+\end{bmatrix}
+,  \lambda \epsilon \mathbb{K}
+\end{equation*} 
+
+Para n =3, existen tres matrices de este tipo:
+\begin{equation*}
+ E_{12}(\lambda) = \begin{bmatrix}
+ 1 & \lambda &  0 \\
+ 0 &  1 & 0 \\
+ 0 &  0 & 1 \\
+\end{bmatrix},
+ E_{13}(\lambda) = \begin{bmatrix}
+ 1 &  0 & \lambda \\
+ 0 &  1 & 0 \\
+ 0 &  0 & 1 \\
+\end{bmatrix},
+ E_{23}(\lambda) = \begin{bmatrix}
+ 1 &  0 & 0 \\
+ 0 &  1 & \lambda \\
+ 0 &  0 & 1  \\ 
+\end{bmatrix} , 
+\end{equation*}
+adem\'{a}s de las matrices $E_{21}(\lambda), E_{31}(\lambda), E_{32}(\lambda)$.
+
+\item $E_{ij}$: matriz obtenida de la identidad I, intercambiando de la i-\'{e}sima fila con la j-\'{e}sima, $ i\not= j$. Por ejemplo, para n = 2, existe una \'{u}nica matriz de este tipo: 
+\begin{equation*}
+E_{12} = \begin{bmatrix}
+ 0 &  1 \\
+ 1 &  0 \\
+\end{bmatrix}
+= E_{21}
+\end{equation*}
+
+Para n =3, existen tres matrices de este tipo:
+\begin{equation*}
+ E_{12}(\lambda) = \begin{bmatrix}
+ 0 &  1 & 0 \\
+ 1 &  0 & 0 \\
+ 0 &  0 & 1 \\
+\end{bmatrix},
+ E_{13}(\lambda) = \begin{bmatrix}
+ 0 &  0 & 1 \\
+ 0 &  1 & 0 \\
+ 1 &  0 & 0 \\
+\end{bmatrix},
+ E_{23}(\lambda) = \begin{bmatrix}
+ 1 &  0 & 0 \\
+ 0 &  0 & 1 \\
+ 0 &  1 & 0 \\ 
+\end{bmatrix} , 
+\end{equation*}
+Adem\'{a}s se observa que $E_{12}= E_{21},E_{13}= E_{31},E_{23}= E_{32}$. Toda matriz elemental es inversible y su inversa es una matriz elemental del mismo tipo. Es m\'{a}s, se verifican las f\'{o}rmulas:
+
+\begin{enumerate}
+\item $[E_i(\lambda)]^{-1}=E_i(\lambda^{-1})$, donde $\lambda \not= 0, i=1,\ldots ,m.$
+\item $[E_{ij}(\lambda)]^{-1}=E_{ij}(\lambda^{-1})$ donde $i\not=j$.
+\item $ E_{ij}^{-1}= E_{ij}$ donde $i\not=j$.
+\end{enumerate}
+\end{enumerate}
+
+\section{Cálculo de inversas}
+La primera aplicaci\'{o}n, y una de las m\'{a}s importantes de las t\'{e}cnicas de operaciones elementales, es el c\'{a}lculo de la inversa de una matriz. Recordemos que una matriz $A \in \K^{n \times n}$ es inversible si existe una matriz B $\in \K^{n \times n}$ tal que $AB = I = BA$. En la pr\'{a}ctica, no hace falta verificar las dos propiedades, $AB=I$ y $BA=I$, para afirmar que $B$ es la inversa de $A$, sino solamente una cualquiera de ellas, como veremos en seguida.
+\begin{propo}
+Sea $A \in \K^{n \times 1}$ una matriz tal que $L_A: \K^{n \times 1}\implies \K^{n \times 1}$ es inyectiva, entonces existen matrices elementales $E_j$, tales que $$ E_{k}E_{k-1} \cdots E_{1}A=I $$ 
+\end{propo}
+\begin{coro}
+Con las hip\'{o}tesis de la proposici\'{o}n anterior, la matriz $A$ tiene la cualidad de ser inversible.
+\end{coro}
+Ahora, $E_{k}E_{k-1} \cdots E_{1}A$ obtenida de la proposici\'{o}n anterior, multiplicando por la izquierda sucesivamente por $E_{k}^{-1}, \ldots ,E_1^{-1}$, se obtiene $$A = E_{1}^{-1}E_{2}^{-1} \cdots E_{k}^{-1}.$$
+Luego, multiplicando sucesivamente por $E_k,....,E_1 = I$, se llega a $$ AE_k \cdots E_1 = I.$$
+\begin{proof}[Demostración] Por hip\'{o}tesis, existe B $\epsilon$  $\K^{n \times n}$ tal que $ BA = I $. Si $Ax = 0$, entonces $$ x = Ix = B(Ax) = B0 = 0.$$ Esto prueba que $L_A$ es inyectiva, y por tanto A inversible.
+\end{proof}
+
+\begin{coro}
+Si A $\in \K^{n \times n}$ posee inversa a derecha, entonces es inversible.\\\textbf{\textit{Demostracion})}: Por hip\'{o}tesis, existe B $\in \K^{n \times n}$ tal que $AB = I$. Por el colorario anterior es inversible. Luego $$ A = (AB)B^{-1} = B^{-1} $$ As\'{i}, $A$ es inversible.
+\end{coro}
+
+Todo esto nos permite dar una aplicación a modo de ejemplo.
+\begin{ejem}
+ La universidad de navarra ha hecho un estudio de los gastos de personal mensuales que tienen la facultad Amigos, Fcom,la facultad de ciencias y la facultad de Filosof\'{i}a y letras. Para facilitar dicho calculo se han utilizado operaciones matriciales. La siguiente tabla nos muestra el numero de empleados de cada facultad respecto a los profesores, las personas dedicadas a la limpieza de los edificios y los bedeles .
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+ \hline 
+ \rule[-1ex]{0pt}{2.5ex} &          Amigos &     Fcom &      Ciencias &    F  y letras \\ 
+ \hline 
+ \rule[-1ex]{0pt}{2.5ex} Profesores  & 162 & 158 & 213 & 74 \\ 
+ \hline 
+ \rule[-1ex]{0pt}{2.5ex} Limpieza & 9 & 7 & 13 & 8 \\ 
+ \hline 
+ \rule[-1ex]{0pt}{2.5ex} Bedeles  & 4 & 3 & 7 & 4 \\ 
+ \hline 
+ \end{tabular}  
+\end{center} 
+Las columnas de la matriz van a representar las diferentes facultades mientras que las filas representaran el numero de empleados en cada sector. $A$ dicha matriz, la denominaremos matriz $A$.
+\begin{equation*}
+ A = \begin{bmatrix}
+ 162 &  158 & 213 & 74 \\
+ 9 &  7 & 13  &  8  \\
+ 4 &  3 & 7  &  4 \\
+\end{bmatrix},
+\end{equation*}
+La matriz B sera la que represente los gastos de dicho personal en las facultades:
+\begin{equation*}
+ B = \begin{bmatrix}
+ 2500 &  1200 & 1700 \\
+\end{bmatrix}
+\end{equation*}
+Multiplicamos las dos matrices ($A$ y $B$) para obtener dichos gastos mensuales de personal:
+\begin{multline*}
+\begin{bmatrix} 
+ 2500 &  1200 & 1700 \\
+ \end{bmatrix}
+\begin{bmatrix}
+ 162 & 158 & 213 & 74 \\
+  9 & 7  & 13 &  8 \\
+  4 & 3  & 7  &  4 \\
+\end{bmatrix} 
+\\=\begin{bmatrix}
+ 422600 & 408500 & 560000 & 201400 \\
+ \end{bmatrix}.
+\end{multline*}
+
+
+
+
+
+
+\end{ejem}
+
+
+
+\end{document}

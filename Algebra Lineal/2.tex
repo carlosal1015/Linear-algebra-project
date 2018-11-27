@@ -1,0 +1,99 @@
+\documentclass[10pt,a4paper]{article}
+\def\gettexliveversion#1(#2 #3 #4#5#6#7#8)#9\relax{#4#5#6#7}
+\edef\texliveversion{\expandafter\gettexliveversion\pdftexbanner\relax}
+
+\ifnum\texliveversion<2018
+\usepackage[utf8]{inputenc}
+\else
+\fi
+\usepackage[T1]{fontenc}
+
+\usepackage[spanish,es-sloppy]{babel}
+\spanishdatedel
+
+\usepackage{amsmath,amsthm}
+\usepackage[cmintegrals]{newtxmath}
+\usepackage{xcolor}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{proposition}{Proposición}[section]
+
+\begin{document}
+%\pagecolor{black}
+%\color{white}
+
+\begin{proposition}
+    Una transformación lineal $T: V \rightarrow V$ y su matriz asociada $A_{T}$ tienen  los mismos autovalores.
+\end{proposition}
+
+\begin{proof}
+Sea $\lambda$ un autovalor de $T$ y $v \in V$ un autovector correspondiente a $\lambda$, entonces
+\begin{align*}
+     A_{T}(x_{v}) & = \psi(T(v))  (por la proposici\'on)\\
+                  & = \psi(\lambda v) = \lambda \psi(v)\\
+                  & = \lambda x_{v}
+\end{align*}
+Esto prueba que $\lambda$ es un autovector de $A_{T}$. \\
+Rec\'iprocaamente, sea $\lambda$ un autovalor de $A_{T}$ y $x \in \mathhb{K}^{n \time 1}$ un correspondiente autovector. Existe entonces un vector $v \in V$ tal que $\psi(v) = x$(pues $\psi$ es un isomorfismo), de donde
+\begin{align*}
+     \psi(T(v)) & =  \psi(T(v))  (por la proposici\'on)\\
+                & = \psi(\lambda v) = \lambda \psi(v)\\
+                & = \lambda (x_{v})
+\end{align*}
+siendo $\psi$ inyectiva, resulta $T(v) = \lambda v$. Como $v \neq 0$, $\lambda$ es autovalor de $T$.
+\end{proof}
+
+\textbf{Corolario.} Si $A$, $P$ $\in \mathbb{K}^{n \time n}$ y $P$ es inversible, entonces $A$ y $P^{-1}AP$ tienen  los mismos autovalores. \\ 
+
+\textbf{Demostraci\'on.} Es suficiente observar que $A$ y $P^{-1}AP$ son matrices asociadas a una misma transformaci\'on lineal.\\
+
+La existencia de de autovalores de una transformaci\'on lineal depende del cuerpo $\mathhb{K}$ y de la dimenci\'on del espacio vectorial, como se muestra en el siguiente ejemplo.\\
+
+\textbf{Ejemplo.} La transformaci\'on lineal $T : \mathhb{R}^{2} \rightarrow \mathhb{R}^{2}$, $T(x,y)  = (-y,x)$ no posee autovalores en $\mathhb{R}$.\\
+
+En efecto, supongamos que $\lambda \in \mathhb{R} $ es un autovalor de $T$ y $v = (a,b) \neq 0$ un correspondiente autovector. Por definici\'on \\
+
+$$(-b,a) = T(a,b) = \lambda(a,b)$$. \\
+ecuaci\'on que no posee soluci\'on en $\mathhb{R}.$
+
+\section{Triangulaci\'on de Matrices. El Teorema de Cayley-Hamilton}
+Definici\'on. Diremos que una matriz $A \in \mathhb{K}^{n \times n}$ es \textbf{triangulable}  si es semejante a una matriz triangular(superior). Una transformaci\'on lineal $T: V \rightarrow V$ es \textbf{triangulable} si exxiste una base de $V$ en la que la matriz asociada a $T$ es triangular.
+
+Un asistente importante sobre la estructura de una matriz es el siguiente.
+\begin{proposition}
+sea $\mathbb{K = C}$. Toda transformaci\'on lineal $T : V \rightarrow V$ es triangulable.
+\begin{proof}
+Esta demostraci\'on se hara por indicci\'on sobre $n = dimV $. Si $n>1$, suponemos que la proposici\'on es valida para todo espacio vectorial de dimenci\'on $n-1$. Consideremos la transformaci\'on lineal $T^{\bigtriangledown} :V^{*} \rightarrow V^{*}$, definida por $T^{\bigtriangledown}(f) = foT$, para $f\in V^{*}$.\\
+Sea $\lambda \in \mathbb{C}$ un autovalor de $T^{\bigtriangledown}$ y y $g \in V^{*}$ un correspondiente autovector, esto es\\
+$$T^{\triangledown} = \lambda g ,~ g\neq 0$$
+
+El sub espacio de $V$ \\
+
+$$S = {v \in V / g(v) = 0}$$
+tiene dimenci\'on $n-1$ y es invariante por $T(T(s)\subset S)$. Por hip\'otesis inductiva, $S$ posee una base $\{v_{1},...,v_{n}\}$en la que $T$ se escribe como
+
+\begin{align*}
+    	 T(v_{1}) & = \lambda_{1}v_{1}\\
+         T(v_{2}) & = a_{12}v_{1} + \lambda_{2}v_{2}\\
+                  & .\\
+                  & .\\
+                  & .\\
+       T(v_{n-1}) & = a_{1,n-1}v_{1} +...+ \lambda_{n-1}v_{n-1}
+\end{align*}
+Si a los vectores $v_{1},...,v_{n}$ agregamos un vector $v_{n}$ a finde completar una base de $V$, con la expresi\'on\\
+$T(v_{n}) = a_{1n}v_{1},...,\lambda v_{n}$\\
+la matriz asociada a $T$, en la base $\{v_{1},...,v_{n}\}$ es triangular superior.
+
+ 
+
+\end{proof}
+\end{proposition}
+
+
+
+
+
+
+
+\end{document}
