@@ -1,5 +1,5 @@
 % !TeX document-id = {9d223eca-9818-4f05-a953-42e014392f08}
-% !TeX TXS-program:compile = txs:///pdflatex.exe // biber.exe//pdflatex.exe//pdflatex.exe
+% !TeX TXS-program:compile = txs:///pdflatex // biber //pdflatex//pdflatex
 \documentclass[b5paper, 11pt]{book}
 
 \usepackage[T1]{fontenc}
@@ -160,15 +160,15 @@
 
 \begin{document}
 \chapter{Espacios con producto interno}
-En una ocasi\'on anterior se han estudiado las condiciones, propiedades y operaciones con los espacios vectoriales, este contenido se obviar\'a y se pasar\'a a una definici\'on muy importante que solo concierne a espacios vectoriales reales o complejos. El objetivo principal de lo que a continuaci\'on se expondr\'a es tratar con aquellos espacios vectoriales en los que tiene sentido hablar de \textit{longitud} de un vector y \textit{\'angulo} entre vectores.
+En una ocasión anterior se han estudiado las condiciones, propiedades y operaciones con los espacios vectoriales, este contenido se obviará y se pasará a una definición muy importante que solo concierne a espacios vectoriales reales o complejos. El objetivo principal de lo que a continuación se expondrá es tratar con aquellos espacios vectoriales en los que tiene sentido hablar de \textit{longitud} de un vector y \textit{ángulo} entre vectores.
 
-Bajo esta premisa, se define un cierto tipo de funci\'on que toma un valor escalar sobre parejas de vectores conocido como \textit{producto interno}. El ejemplo m\'as conocido es el producto que surge de manera natural\footnote{Esta afirmaci\'on surge de garantizar la ortogonalidad de dos vectores utilizando la suma y diferencia de vectores} en $\R^{3}$.
+Bajo esta premisa, se define un cierto tipo de función que toma un valor escalar sobre parejas de vectores conocido como \textit{producto interno}. El ejemplo m\'as conocido es el producto que surge de manera natural\footnote{Esta afirmación surge de garantizar la ortogonalidad de dos vectores utilizando la suma y diferencia de vectores} en $\R^{3}$.
 
 \section{Producto interno}
-El producto interno sobre un espacio vectorial es una funci\'on con propiedades similares a los de producto escalar $\R^{3}$, de manera an\'aloga se pueden definir los conceptos de longitud y \'angulo\footnote{El comentario respecto a la noci\'on general de \'angulo se restringir\'a al concepto de perpendicularidad (u ortogonalidad) de vectores.}.
+El producto interno sobre un espacio vectorial es una función con propiedades similares a los de producto escalar $\R^{3}$, de manera análoga se pueden definir los conceptos de longitud y ángulo\footnote{El comentario respecto a la noción general de ángulo se restringirá al concepto de perpendicularidad (u ortogonalidad) de vectores.}.
 
 \begin{unadefi}
-Sea $V$ un espacio vectorial, un producto interno sobre $\R$ es una aplicaci\'on
+Sea $V$ un espacio vectorial, un producto interno sobre $\R$ es una aplicación
 \begin{align*}
 \langle \mathbf{\cdot} \, , \mathbf{\cdot} \rangle	&\to \R\\
 (u,v)							&\mapsto \langle u, v \rangle
@@ -183,17 +183,17 @@ que satisface las siguientes propiedades
 \end{unadefi}
 
 \begin{unadefi}
-Un $\R$-espacio vectorial $V$ de dimensi\'on finita con producto interno, se llama espacio euclidiano o espacio ortogonal
+Un $\R$-espacio vectorial $V$ de dimensión finita con producto interno, se llama espacio euclidiano o espacio ortogonal.
 \end{unadefi}
 
 En $V= \R^{n}$, el producto interno
 \[
 u \cdot v= \sum_{i=1}^{n}x_{i}y_{i} 
 \]
-donde $u=(x_{1}, \ldots, x_{n})$ y $v=(y_{1}, \ldots , y_{n})$ se llama producto interno can\'onico. En este espacio existen muchos productos internos.
+donde $u=(x_{1}, \ldots, x_{n})$ y $v=(y_{1}, \ldots , y_{n})$ se llama producto interno canónico. En este espacio existen muchos productos internos.
 
 \begin{unadefi}
-Sea $V$ un $\mathds{C}$-espacio vectorial, un producto interno (hermitiano) sobre $V$, es una aplicaci\'on
+Sea $V$ un $\mathds{C}$-espacio vectorial, un producto interno (hermitiano) sobre $V$, es una aplicación
 \begin{align*}
 \langle \mathbf{\cdot} \, , \mathbf{\cdot} \rangle	&\to \mathds{C}\\
 (u,v)							&\mapsto \langle u, v \rangle
@@ -208,20 +208,20 @@ que satisface las siguientes propiedades
 \end{unadefi}
 
 \begin{unadefi}
-Un $\mathds{C}$-espacio vectorial $V$ de dimensi\'on finita con producto interno, se llama espacio vectorial complejo o espacio unitario.
+Un $\mathds{C}$-espacio vectorial $V$ de dimensión finita con producto interno, se llama espacio vectorial complejo o espacio unitario.
 \end{unadefi}
 \begin{obs}Con respecto a las definiciones iniciales se afirma
 \begin{enumerate}
 \item $\langle u, \lambda v \rangle= \overline{\langle \lambda v, u \rangle}$.
 \item $\langle u,u \rangle= \overline{\langle u,u \rangle}$. Luego $\langle u,u \rangle$ es real, esto implica $\langle u,u \rangle \geq 0$.
-\item En $\mathds{C}^{n}$, dados $x= (x_1, \ldots , x_n)$ y $y= (y_{1}, \ldots , y_{n})$, su producto interno can\'onico se define como
+\item En $\mathds{C}^{n}$, dados $x= (x_1, \ldots , x_n)$ y $y= (y_{1}, \ldots , y_{n})$, su producto interno canónico se define como
 \[
 x \cdot y= \sum_{i=1}^{n} x_{i}\overline{y_{i}}.
 \]
 \end{enumerate}
 \end{obs}
 
-Un producto interno sobre un espacio vectorial $V$ (real o complejo) define una \textit{norma} mediante la f\'ormula
+Un producto interno sobre un espacio vectorial $V$ (real o complejo) define una \textit{norma} mediante la fórmula
 \[
 \Vert u \Vert= \sqrt{\langle u,u \rangle}, \quad u \in V.
 \]
@@ -235,18 +235,18 @@ Son propiedades de la norma
 \end{propo}
 
 \begin{unadefi}
-Dos vectores $u,v \in V$ son ortogonales si $\langle u,v \rangle =0$. En tal caso, esta situaci\'on se denotar\'a con $u \perp v$.
+Dos vectores $u,v \in V$ son ortogonales si $\langle u,v \rangle =0$. En tal caso, esta situación se denotar\'a con $u \perp v$.
 \end{unadefi}
 
 
 \section{Bases ortonormales}
-Nuevamente se aclara que se considera un espacio vectorial $V$ provisto de un producto interno. Una base de $V$ es llamada \textit{base ortogonal} si sus elementos son mutuamente ortogonales. Por ejemplo, la base can\'onica $\{ e_{1}, \ldots , e_{n} \}$ de $\R^{n}$ es una base ortogonal.
+Nuevamente se aclara que se considera un espacio vectorial $V$ provisto de un producto interno. Una base de $V$ es llamada \textit{base ortogonal} si sus elementos son mutuamente ortogonales. Por ejemplo, la base canónica $\{ e_{1}, \ldots , e_{n} \}$ de $\R^{n}$ es una base ortogonal.
 
-\begin{propog}[M\'etodo de ortogonalizaci\'on de Gram-Schmidt]
+\begin{propog}[Método de ortogonalización de Gram-Schmidt]
 Dada una base $\{ v_{1}, \ldots , v_{n} \}$ de $V$, existe una base ortogonal $u_{1}, \ldots , u_{n}$ de $V$, tal que $u_{j} \in \mathcal{L}\{ v_{1}, \ldots , v_{j} \}$ para cada $j= 1,2, \ldots , n$.
 \end{propog}
 
-\begin{proof}[Demostraci\'on] El m\'etodo de ortogonalizaci\'on de Gram-Schmidt tiene la siguiente secuencia. Sea $u_1 =v_1$. Buscamos el vector $u_2 =v_2 + \lambda u_{1}$ con la condici\'on de que $\langle u_{1}, u_{2} \rangle= 0$. Esto implica
+\begin{proof}[Demostración] El método de ortogonalización de Gram-Schmidt tiene la siguiente secuencia. Sea $u_1 =v_1$. Buscamos el vector $u_2 =v_2 + \lambda u_{1}$ con la condición de que $\langle u_{1}, u_{2} \rangle= 0$. Esto implica
 \[
 \lambda = -\dfrac{\langle v_2 , u_1 \rangle}{\Vert u_1 \Vert^{2}}.
 \]
@@ -264,7 +264,7 @@ bajo las condiciones $\langle u_{j}, u_{i}\rangle =0$ para cada $i= 1,2, \ldots 
 Una base ortogonal se llama \textit{base ortonormal} si cada un de sus elementos tiene norma 1. 
 \end{unadefi}
 
-La base can\'onica $\{ e_{1}, \ldots e_{n} \} \in \R^{n}$ es una base ortonormal. Si $\{ v_{1}, \ldots , v_{n} \}$ es una base ortogonal de un espacio vectorial $V$, entonces basta dividir cada elemento por su norma para obtener una base ortonormal,
+La base canónica $\{ e_{1}, \ldots e_{n} \} \in \R^{n}$ es una base ortonormal. Si $\{ v_{1}, \ldots , v_{n} \}$ es una base ortogonal de un espacio vectorial $V$, entonces basta dividir cada elemento por su norma para obtener una base ortonormal,
 \[
 \left\{ \dfrac{v_{1}}{\Vert v_{1} \Vert}, \dfrac{v_{2}}{\Vert v_{2} \Vert}, \ldots , \dfrac{v_{n}}{\Vert v_{n} \Vert} \right\}.
 \]
@@ -276,37 +276,30 @@ A^{\perp}= \{ u \in  V | \langle u,v \rangle =0, \text{ para todo } v \in A \}.
 El conjunto $A^{\perp}$ es un subespacio, llamado \textit{ortogonal} de $A$.
 
 \begin{propo}
-Si $S$ es un subespacio de dimensi\'on finita de un espacio vectorial, entonces
+Si $S$ es un subespacio de dimensión finita de un espacio vectorial, entonces
 \[
 V= S \oplus S^{\perp}.
 \]
 \end{propo}
 
-\section{Aplicaci\'on de las bases ortonormales}
+\section{Aplicación de las bases ortonormales}
 
-\subsection{An\'alisis de im\'agenes}
-Se llama an\'alisis de im\'agenes a la extracci\'on de informaci\'on derivada de sensores y representada gr\'aficamente en formato de dos o tres dimensiones, para lo cual se puede utilizar tanto an\'alisis visual como digital (procesamiento digital de im\'agenes). Abarca la fotograf\'ia en blanco y negro y color, infrarroja, im\'agenes sat\'elitales, de radar, radar de alta definici\'on, ultrasonido, electrocardiogramas, electroencefalogramas, resonancia magn\'eticay sismogramas y otros.
+\subsection{Análisis de imágenes}
+Se llama análisis de imágenes a la extracción de información derivada de sensores y representada gráficamente en formato de dos o tres dimensiones, para lo cual se puede utilizar tanto análisis visual como digital (procesamiento digital de imágenes). Abarca la fotografiá en blanco y negro y color, infrarroja, imágenes satelitales, de radar, radar de alta definición, ultrasonido, electrocardiogramas, electroencefalogramas, resonancia magnética y sismogramas y otros.
 
-\subsection{Las computadoras y el impacto de las im\'agenes}
-La experimentaci\'on con las im\'agenes \'opticas resultar\'ia en la explotaci\'on y la manipulaci\'on de centenares de niveles de sombra, resultando en una mejor explotaci\'on de la informaci\'on obtenida.
+\subsection{Las computadoras y el impacto de las imágenes}
+La experimentación con las imágenes ópticas resultaría en la explotación y la manipulación de centenares de niveles de sombra, resultando en una mejor explotación de la información obtenida.
 
-Los primeros en usar esta nueva tecnolog\'ia ser\'ian la inteligencia americana y los investigadores cient\'ificos quienes refinar\'ian esta tecnolog\'ia, resultando en la tomograf\'ia computarizada. Otra tecnolog\'ia es la del ecocardiograma que har\'ia posible el ver movimientos card\'iacos y el flujo card\'iaco. Otro adelanto ser\'ia la introducci\'on de la resonancia magn\'etica cuyas im\'agenes revelar\'ian anomal\'ias en tejidos humanos y flujo sangu\'ineos. Tambi\'en podr\'ia dar evidencia de daños en la espina dorsal y en procesos neuroqu\'imicos cerebrales. En el presente los cient\'ificos est\'an explorando el uso de nuevas tecnolog\'ias que hagan uso de m\'as sectores des espectro electromagn\'etico como por ejemplo las im\'agenes de rayos X.
+Los primeros en usar esta nueva tecnología serían la inteligencia americana y los investigadores científicos quienes refinarían esta tecnología, resultando en la tomografía computarizada. Otra tecnología es la del ecocardiograma que haría posible el ver movimientos cardíacos y el flujo cardíaco. Otro adelanto sería la introducción de la resonancia magnética cuyas imágenes revelarían anomalías en tejidos humanos y flujo sanguíneos. También podría dar evidencia de daños en la espina dorsal y en procesos neuroquímicos cerebrales. En el presente los científicos están explorando el uso de nuevas tecnologías que hagan uso de más sectores des espectro electromagnético como por ejemplo las imágenes de rayos X.
 
-Existe un sinfín de aplicaciones en el ana\'alisi de im\'agenes. Aqu\'i tocamos un punto medular, y es que la matem\'atica que la rige es, seg\'un Sergio Dominguez (Centro de Autom\'atica y Rob\'otica UPM-CSISC Madrid, España),  se deben realizar utilizando el m\'etodo de los momentos utilizando funciones de base continuas a intervalos (PCBF).
+Existe un sinfín de aplicaciones en el análisis de imágenes. Aquí tocamos un punto medular, y es que la matemática que la rige es, según Sergio Domínguez (Centro de Automática y Robótica UPM-CSISC Madrid, España),  se deben realizar utilizando el método de los momentos utilizando funciones de base continuas a intervalos (PCBF).
 
-\subsection{Definici\'on de las bases}
+\subsection{Definición de las bases}
 
 El punto de partida para la propuesta
-
-
 
 \[
 M_{mn}= \int_{x_0}^{x_f} \int_{y_0}^{y_f} I(x,y)p_{mn}^{*} (x,y) dx dx
 \]
-
-
-
-
-
 
 \end{document}

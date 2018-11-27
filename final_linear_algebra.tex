@@ -1,0 +1,530 @@
+% arara: pdflatex
+% arara: biber
+% arara: pdflatex
+% arara: pdflatex
+% arara: clean: {extensions: ['log','out','aux','bbl','bcf','blg']}
+\documentclass[b5paper, 11pt]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage[left=2.6cm,right=2.6cm,top=2.6cm,bottom=4.2cm]{geometry}
+
+\usepackage{helvet}% Fuente helvética 
+\usepackage{calligra}%Para letras caligráficas
+
+%con respecto a la figura
+\renewcommand{\figurename}{Figura}
+\usepackage{wrapfig}
+\usepackage{here}
+
+%paquete de enumeracion
+\usepackage[shortlabels]{enumitem}
+
+\newcommand{\helv}{\fontfamily{phv}\fontsize{9}{11}\selectfont}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+
+% Definir las marcas: capítulo.sección -------
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{} % borra cabecera y pie actuales
+
+% El número de página
+\fancyhead[LE,RO]{\bfseries\large\thepage} %L=Left, R=right, O=Odd (impar),E=Even págs pares
+% "Marcas" a la derecha e izquierda del encabezado
+\fancyhead[LO]{\helv\rightmark}
+\fancyhead[RE]{\helv\leftmark}
+% Sin raya. Con raya?: cambiar {0} por {0.5pt}
+\renewcommand{\headrulewidth}{0.5pt} 
+
+\fancyfoot[RO]{}
+
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt} % espacio para la raya
+\fancypagestyle{plain}{%
+\fancyhead{} % elimina cabeceras y raya en páginas "plain"
+\renewcommand{\headrulewidth}{0pt}}
+
+%para matematicas
+\usepackage{amsthm,amsmath,amssymb,amsfonts,latexsym,xcolor}
+\usepackage{xlop}
+\usepackage{dsfont}
+\usepackage{calrsfs} %caligrafía matemática
+
+%Definir el vector nulo
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\K}{\mathds{K}}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\R}{\mathds{R}}
+
+%para graficos
+\usepackage{xparse}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\usepackage{tcolorbox}
+
+%para cancelar terminos
+\usepackage{cancel} 
+
+\definecolor{azulF}{rgb}{.0,.0,.3} % Azul
+\definecolor{rojoF}{RGB}{212,0,0} % Rojo
+\definecolor{verdeF}{RGB}{0,102,0} % Verde
+\definecolor{naranjaF}{RGB}{255,128,0} % Naranja
+\definecolor{rojoF}{RGB}{153,0,0} %Rojo
+
+%Espacio entre párrafos
+\setlength{\parskip}{2.5mm}
+
+%Renombrando las partes del texto
+\renewcommand{\chaptername}{Capítulo}
+
+%Cambiando el simbolo de demostracion al final
+\renewcommand \qedsymbol {$\blacksquare$}
+
+
+%para los capitulos
+%\usepackage[Glenn]{fncychap}
+%\ChTitleVar{\Large\rm\centering} % sets the style for title
+
+\newtheorem{obs}{Observación}[chapter]
+%-------------------------------------------------Estilo B
+\newtheoremstyle{estiloB}
+{}
+{}
+{}
+{}
+{\color{azulF}\bfseries} % fuente del encabezado
+{} % puntuación
+{\newline} % espacio después del encabezado
+{\thmname{#1}~\thmnumber{\color{azulF} #2}\thmnote{~\color{azulF}(#3)}}
+%%--
+\theoremstyle{estiloB}
+\newtheorem{unadefig}{Definición}[chapter]
+\newtheorem{unteog}{Teorema}[chapter]
+\newtheorem{axiomg}{Axioma}[chapter]
+\newtheorem{ejemg}{Ejemplo}[chapter]
+\newtheorem{propog}{Proposición}[chapter]
+
+%-------------------------------------------------Estilo C
+\newtheoremstyle{estiloC}
+{}
+{}
+{}
+{}
+{\color{azulF}\bfseries}%
+{.}{ }
+{}
+%\swapnumbers % Intercambiar número-teorema
+\theoremstyle{estiloC}
+\newtheorem{unteo}{Teorema}[chapter]
+\newtheorem{ejem}{Ejemplo}[chapter]
+\newtheorem{unadefi}{Definición}[chapter]
+\newtheorem{aplica}{Aplicación}
+
+%-------------------------------------------------Estilo D
+\newtheoremstyle{estiloD}
+{}
+{}
+{}
+{}
+{\color{rojoF}\bfseries}%
+{.}{ }
+{}
+%\swapnumbers % Intercambiar número-teorema
+\theoremstyle{estiloD}
+%primer tipo de teoremas
+\newtheorem{propo}{Proposición}[chapter]
+\newtheorem{coro}{Corolario}[chapter]
+\newtheorem{lema}{Lema}
+\newtheorem{axi}{Axioma}[chapter]
+%%%%
+
+
+\newtheorem{notation}{Notación}[chapter]
+
+
+
+%Definiendo operadores matemáticos
+\def\ca{\mathop{\mbox{\normalfont CA}}\nolimits}%Complemento aritmético
+\def\car{\mathop{\mbox{\normalfont card}}\nolimits}%Cardinal de un conjunto
+
+\usepackage{multicol} %para las multicolumnas
+\usepackage{yhmath} %para los decimales periodicos puros
+
+\newtheorem{definition}{Definición}[section]
+\newtheorem{proposition}{Proposición}[section]
+\newtheorem{corollary}{Corolario}[section]
+\newtheorem{example}{Ejemplo}[section]
+\newtheorem{lemma}{Lema}[section]
+%Emoticones
+%\usepackage{MnSymbol,wasysym}
+
+\usepackage[citestyle=numeric,style=numeric,backend=biber]{biblatex}
+\addbibresource{bib.bib}
+\begin{document}
+
+\chapter{Determinantes}
+
+Un determinante es una aplicación de $\mathbb{K}^{n\times n}$ en $\mathbb{K}$, la que definiremos en función de dos axiomas. Luego probaremos su existencia. Para este cometido, escribiremos las matrices $A\in\mathbb{K}^{n\times n}$ en función de sus vectores columna, del siguiente modo:
+
+\begin{equation*}
+A=\left[A_1,\ldots,A_n\right]\quad A_{j}\in\mathbb{K}^{n\times1},\quad j=1,2,\ldots,n.
+\end{equation*}
+
+\begin{definition}
+	Una función determinante sobre $\mathbb{K}^{n\times n}$ es una aplicación \[ D\colon\mathbb{K}^{n\times n}\longrightarrow\mathbb{K} \] que satisface las siguientes condiciones:
+\end{definition}
+\begin{enumerate}[1)~]
+	\item $D$ es $n$-lineal, esto es: \[ D\left[A_{1},\ldots,\alpha A_{i}+\beta A_{j},\ldots, A_{n}\right]=\alpha D\left[A_{1},\ldots,A_{i},\ldots,A_{n}\right]+\beta D\left[A_{1},\ldots,A_{j},\ldots,A_{n}\right]\quad j=1,\ldots, n\quad\alpha,\beta\in\mathbb{K}. \]
+	\item $D$ es alternada, esto es: \[ D\left[A_{1},\ldots,A_{i},\ldots,A_{j},\ldots,A_{n}\right]=-D\left[A_{1},\ldots,A_{j},\ldots,A_{i},\ldots,A_{n}\right]\quad\text{donde }i<j. \]
+\end{enumerate}
+Estos dos axiomas definen a un determinante.
+
+En adelante, $D$ denota una función determinante.
+
+\begin{proposition}\label{prop:1}
+	Si una matriz $A$ tiene una columna de ceros, entonces $D\left(A\right)=0$.
+\end{proposition}
+\begin{proof}
+	Supongamos que $A=\left[0,A_{2},A_{3},\ldots,A_{n}\right]$, entonces
+	\begin{align*}
+	D\left(A\right)	&= D\left[0+0,A_{2},A_{3},\ldots, A_{n}\right]\\
+	&= D\left[0+0,A_{2},A_{3},\ldots, A_{n}\right]+D\left[0+0,A_{2},A_{3},\ldots, A_{n}\right]\\
+	D\left(A\right)	&= D\left(A\right)+D\left(A\right)\\
+	D\left(A\right)	&= 0.
+	\end{align*}
+\end{proof}
+
+\begin{proposition}\label{prop:2}
+	Si $A$ tiene dos columnas iguales, entonces $D\left(A\right)=0$.
+\end{proposition}
+\begin{proof}
+	Sea $A=\left[A_{1},\ldots, A_{i},\ldots,A_{j},\ldots,A_{n}\right]$, donde $A_{i}=A_{j}$, $i<j$. Entonces
+	\begin{align*}
+	D\left(A\right)	&=-D\left[A_{1},\ldots,A_{j},\ldots,A_{i},\ldots, A_{n}\right]\\
+	D\left(A\right)	&=-D\left(A\right)\\
+	2D\left(A\right)&= 0\\
+	D\left(A\right)	&= 0.
+	\end{align*}
+\end{proof}
+\begin{proposition}\label{prop:3}
+	Si a una columna de una matriz se le suma el múltiplo de otra columna, entonces su determinante no cambia.
+\end{proposition}
+\begin{proof}
+	En efecto,
+	\begin{align*}
+	D\left[A_{1},\ldots, A_{i}+\lambda A_{j},\ldots,A_{j},\ldots,A_{n}\right]	&= D\left[A_{1},\ldots,A_{i},\ldots,A_{j},\ldots,A_{n}\right]+\lambda D\left[A_{1},\ldots,A_{j},\ldots,A_{j},\ldots,A_{n}\right]\\
+	&=D\left(A\right)+\lambda\cdot0\\
+	&=D\left(A\right).
+	\end{align*}
+\end{proof}
+\begin{corollary}
+	El determinante de una matriz no varía si a una columna se le suma la combinación lineal de las demás columnas. \[ D\left[A_{1},\ldots, A_{i}+\sum_{j\neq i}\lambda_{j}A_{j}\right]=D\left[A_{1},\ldots,A_{n}\right]. \]
+\end{corollary}
+
+\begin{proposition}
+	Una función determinante aplicada a las matrices elementales satisface:
+\end{proposition}
+\begin{enumerate}[1)~]
+	\item $D\left(E_{i}\left(j\right)\right)=\lambda D\left(I\right)$, $\lambda\neq0$, $i=1,\ldots,n$.
+	\item $D\left(E_{ij}\left(\lambda\right)\right)=D\left(I\right)$, $i\neq j$, $\lambda\in\mathbb{K}$.
+	\item $D\left(E_{ij}\right)=-D\left(I\right)$.
+\end{enumerate}
+\begin{proof}
+	\begin{enumerate}[1)~]
+		\item $E_{i}\left(\lambda\right)$ es la matriz obtenida de $I$ al multiplicar la $i$-ésima columna por $\lambda$. Luego es claro que \[ D\left(E_{j}\left(\lambda\right)\right)=\lambda D\left(I\right). \]
+		\item $E_{ij}\left(\lambda\right)=\left[I_{1},\ldots, I_{i}+\lambda I_{j},\ldots, I_{n}\right]$ es la matriz obtenida de $I$ sumando la $i$-ésima columna, la $j$-ésima columna multiplicada por $\lambda$. Luego \[ D\left(E_{ij}\left(\lambda\right)\right)=D\left(I\right) \] por la proposición~\ref{prop:3}.
+		\item $E_{ij}$ es obtenida de $I$ intercambiando las columnas $i$ y $j$, de donde \[ D\left(E_{ij}\right)=-D\left(I\right), \] pues $D$ es alternada.
+	\end{enumerate}
+\end{proof}
+
+Existencia y unicidad
+
+El problema de la existencia consiste en exhibir una función determinante no nula, lo que se logra construyendo una función determinante $D_{0}$ tal que $D_{0}\left(I\right)=1$. Por su parte, el problema de unicidad consiste en probar que la función $D_{0}$ es única.
+
+El siguiente lema que relaciona una función $n$-lineal y alternada con $\mathbb{K}^{\left(n+1\right)\times\left(n+1\right)}$ con otras definidas en $\mathbb{K}^{n\times n}$ será la base para una argumento recursivo que nos permitirá probar la unicidad de la función determinante.
+
+\begin{lemma}
+	Sea $f\colon\mathbb{K}^{\left(n+1\right)\times\left(n+1\right)}\longrightarrow\mathbb{K}$ una función $n$-lineal y alternada tal que $f\left(I_{n+1}\right)=\alpha$. Sea $i$ con $1\le i\le n+1$. Se define $f_{i}\colon\mathbb{K}^{n\times n}\longrightarrow\mathbb{K}$
+\end{lemma}
+
+\chapter{Espacios con producto interno}
+En una ocasión anterior se han estudiado las condiciones, propiedades y operaciones con los espacios vectoriales, este contenido se obviará y se pasará a una definición muy importante que solo concierne a espacios vectoriales reales o complejos. El objetivo principal de lo que a continuación se expondrá es tratar con aquellos espacios vectoriales en los que tiene sentido hablar de \textit{longitud} de un vector y \textit{ángulo} entre vectores.
+
+Bajo esta premisa, se define un cierto tipo de función que toma un valor escalar sobre parejas de vectores conocido como \textit{producto interno}. El ejemplo m\'as conocido es el producto que surge de manera natural\footnote{Esta afirmación surge de garantizar la ortogonalidad de dos vectores utilizando la suma y diferencia de vectores} en $\R^{3}$.
+
+\section{Producto interno}
+El producto interno sobre un espacio vectorial es una función con propiedades similares a los de producto escalar $\R^{3}$, de manera análoga se pueden definir los conceptos de longitud y ángulo\footnote{El comentario respecto a la noción general de ángulo se restringirá al concepto de perpendicularidad (u ortogonalidad) de vectores.}.
+
+\begin{unadefi}
+	Sea $V$ un espacio vectorial, un producto interno sobre $\R$ es una aplicación
+	\begin{align*}
+	\langle \mathbf{\cdot} \, , \mathbf{\cdot} \rangle	&\to \R\\
+	(u,v)							&\mapsto \langle u, v \rangle
+	\end{align*}
+	que satisface las siguientes propiedades
+	\begin{itemize}
+		\item[\textit{i)}] $\langle u,v \rangle = \langle v,u \rangle$ $\forall u,v \in V$ 
+		\item[\textit{ii)}] $\langle u+v, w \rangle = \langle u, w\rangle + \langle v+w \rangle$
+		\item[\textit{iii)}] $\langle \lambda u, v \rangle = \lambda \langle u,v \rangle$ $\forall \lambda \in \R$
+		\item[\textit{iv)}] $\langle u,u \rangle \geq 0$ y $\langle u,u \rangle =0 \Longleftrightarrow u= \0$. 
+	\end{itemize}
+\end{unadefi}
+
+\begin{unadefi}
+	Un $\R$-espacio vectorial $V$ de dimensión finita con producto interno, se llama espacio euclidiano o espacio ortogonal.
+\end{unadefi}
+
+En $V= \R^{n}$, el producto interno
+\[
+u \cdot v= \sum_{i=1}^{n}x_{i}y_{i} 
+\]
+donde $u=(x_{1}, \ldots, x_{n})$ y $v=(y_{1}, \ldots , y_{n})$ se llama producto interno canónico. En este espacio existen muchos productos internos.
+
+\begin{unadefi}
+	Sea $V$ un $\mathds{C}$-espacio vectorial, un producto interno (hermitiano) sobre $V$, es una aplicación
+	\begin{align*}
+	\langle \mathbf{\cdot} \, , \mathbf{\cdot} \rangle	&\to \mathds{C}\\
+	(u,v)							&\mapsto \langle u, v \rangle
+	\end{align*}
+	que satisface las siguientes propiedades
+	\begin{itemize}
+		\item[\textit{i)}] $\langle u,v \rangle = \overline{\langle v,u\rangle}$ $\forall u,v \in V$
+		\item[\textit{ii)}] $\langle u+v, w \rangle= \langle u,w \rangle + \langle v,w \rangle$
+		\item[\textit{iii)}] $\langle \lambda u, v \rangle= \lambda \langle u,v \rangle$ $\forall \lambda \in \mathds{C}$
+		\item[\textit{iv)}] $\langle u,u \rangle \geq 0$, $\langle u,u \rangle=0 \Longleftrightarrow u= \0$.
+	\end{itemize}
+\end{unadefi}
+
+\begin{unadefi}
+	Un $\mathds{C}$-espacio vectorial $V$ de dimensión finita con producto interno, se llama espacio vectorial complejo o espacio unitario.
+\end{unadefi}
+\begin{obs}Con respecto a las definiciones iniciales se afirma
+	\begin{enumerate}
+		\item $\langle u, \lambda v \rangle= \overline{\langle \lambda v, u \rangle}$.
+		\item $\langle u,u \rangle= \overline{\langle u,u \rangle}$. Luego $\langle u,u \rangle$ es real, esto implica $\langle u,u \rangle \geq 0$.
+		\item En $\mathds{C}^{n}$, dados $x= (x_1, \ldots , x_n)$ y $y= (y_{1}, \ldots , y_{n})$, su producto interno canónico se define como
+		\[
+		x \cdot y= \sum_{i=1}^{n} x_{i}\overline{y_{i}}.
+		\]
+	\end{enumerate}
+\end{obs}
+
+Un producto interno sobre un espacio vectorial $V$ (real o complejo) define una \textit{norma} mediante la fórmula
+\[
+\Vert u \Vert= \sqrt{\langle u,u \rangle}, \quad u \in V.
+\]
+\begin{propo}
+	Son propiedades de la norma
+	\begin{itemize}
+		\item[\textit{i)}] $\Vert u \Vert \geq 0$ para todo $u \in V$ y $\Vert u \Vert=0 \Longleftrightarrow u=\0$
+		\item[\textit{ii)}] $\vert \langle u,v \rangle \vert \leq \Vert u \Vert \Vert v \Vert$ , $\forall u, v \in V$ (Schwarz)
+		\item[\textit{iii)}] $\Vert u+v \Vert \leq \Vert u \Vert + \Vert v \Vert$ (desigualdad triangular). 
+	\end{itemize} 
+\end{propo}
+
+\begin{unadefi}
+	Dos vectores $u,v \in V$ son ortogonales si $\langle u,v \rangle =0$. En tal caso, esta situación se denotar\'a con $u \perp v$.
+\end{unadefi}
+
+
+\section{Bases ortonormales}
+Nuevamente se aclara que se considera un espacio vectorial $V$ provisto de un producto interno. Una base de $V$ es llamada \textit{base ortogonal} si sus elementos son mutuamente ortogonales. Por ejemplo, la base canónica $\{ e_{1}, \ldots , e_{n} \}$ de $\R^{n}$ es una base ortogonal.
+
+\begin{propog}[Método de ortogonalización de Gram-Schmidt]
+	Dada una base $\{ v_{1}, \ldots , v_{n} \}$ de $V$, existe una base ortogonal $u_{1}, \ldots , u_{n}$ de $V$, tal que $u_{j} \in \mathcal{L}\{ v_{1}, \ldots , v_{j} \}$ para cada $j= 1,2, \ldots , n$.
+\end{propog}
+
+\begin{proof}[Demostración] El método de ortogonalización de Gram-Schmidt tiene la siguiente secuencia. Sea $u_1 =v_1$. Buscamos el vector $u_2 =v_2 + \lambda u_{1}$ con la condición de que $\langle u_{1}, u_{2} \rangle= 0$. Esto implica
+	\[
+	\lambda = -\dfrac{\langle v_2 , u_1 \rangle}{\Vert u_1 \Vert^{2}}.
+	\]
+	Repitiendo el proceso se tiene que
+	\[
+	u_{j}= v_{j}- \sum_{i=1}^{j-1} \lambda_{i} u_{i},
+	\]
+	bajo las condiciones $\langle u_{j}, u_{i}\rangle =0$ para cada $i= 1,2, \ldots , j-1$, las que a su vez determinan los coeficientes $\lambda_{i}$, que son 
+	\[
+	\lambda_{i}= \dfrac{\langle v_{j}, v_{i} \rangle}{\Vert u_{i} \Vert^{2}}, \quad i=1,2, \ldots , j-1.
+	\]
+\end{proof}
+
+\begin{unadefi}
+	Una base ortogonal se llama \textit{base ortonormal} si cada un de sus elementos tiene norma 1. 
+\end{unadefi}
+
+La base canónica $\{ e_{1}, \ldots e_{n} \} \in \R^{n}$ es una base ortonormal. Si $\{ v_{1}, \ldots , v_{n} \}$ es una base ortogonal de un espacio vectorial $V$, entonces basta dividir cada elemento por su norma para obtener una base ortonormal,
+\[
+\left\{ \dfrac{v_{1}}{\Vert v_{1} \Vert}, \dfrac{v_{2}}{\Vert v_{2} \Vert}, \ldots , \dfrac{v_{n}}{\Vert v_{n} \Vert} \right\}.
+\]
+
+Para cada conjunto $A \subset V$ ($V$ espacio con producto interno), se puede definir
+\[
+A^{\perp}= \{ u \in  V | \langle u,v \rangle =0, \text{ para todo } v \in A \}.
+\]
+El conjunto $A^{\perp}$ es un subespacio, llamado \textit{ortogonal} de $A$.
+
+\begin{propo}
+	Si $S$ es un subespacio de dimensión finita de un espacio vectorial, entonces
+	\[
+	V= S \oplus S^{\perp}.
+	\]
+\end{propo}
+
+\section{Aplicación de las bases ortonormales}
+
+\subsection{Análisis de imágenes}
+Se llama análisis de imágenes a la extracción de información derivada de sensores y representada gráficamente en formato de dos o tres dimensiones, para lo cual se puede utilizar tanto análisis visual como digital (procesamiento digital de imágenes). Abarca la fotografiá en blanco y negro y color, infrarroja, imágenes satelitales, de radar, radar de alta definición, ultrasonido, electrocardiogramas, electroencefalogramas, resonancia magnética y sismogramas y otros.
+
+\subsection{Las computadoras y el impacto de las imágenes}
+La experimentación con las imágenes ópticas resultaría en la explotación y la manipulación de centenares de niveles de sombra, resultando en una mejor explotación de la información obtenida.
+
+Los primeros en usar esta nueva tecnología serían la inteligencia americana y los investigadores científicos quienes refinarían esta tecnología, resultando en la tomografía computarizada. Otra tecnología es la del ecocardiograma que haría posible el ver movimientos cardíacos y el flujo cardíaco. Otro adelanto sería la introducción de la resonancia magnética cuyas imágenes revelarían anomalías en tejidos humanos y flujo sanguíneos. También podría dar evidencia de daños en la espina dorsal y en procesos neuroquímicos cerebrales. En el presente los científicos están explorando el uso de nuevas tecnologías que hagan uso de más sectores des espectro electromagnético como por ejemplo las imágenes de rayos X.
+
+Existe un sinfín de aplicaciones en el análisis de imágenes. Aquí tocamos un punto medular, y es que la matemática que la rige es, según Sergio Domínguez (Centro de Automática y Robótica UPM-CSISC Madrid, España),  se deben realizar utilizando el método de los momentos utilizando funciones de base continuas a intervalos (PCBF).
+
+\subsection{Definición de las bases}
+
+El punto de partida para la propuesta
+
+\[
+M_{mn}= \int_{x_0}^{x_f} \int_{y_0}^{y_f} I(x,y)p_{mn}^{*} (x,y) dx dx
+\]
+
+\chapter{Formas Canónicas}
+
+\section{Valores y Vectores Propios}
+
+En lo que sigue de este capitulo, $U$, $V$, $W$ denotarán $\mathbb{K}$-espacios vectoriales de dimensión finita y $\mathbb{K}$ denotará los cuerpos $\mathbb{R}$ o $\mathbb{C}$, salvo mención especifica distinta.
+
+\begin{definition}
+	Dada una transformación lineal $T\colon V \rightarrow{V}$, un número $\lambda\in\mathbb{K}$ se llama \emph{valor propio} o \emph{autovalor} de $T$, si existe un vector $v\in V$, $v\neq0$, tal que $T(v)=\lambda v$. Este vector se llama \emph{vector propio} o \emph{autovector} de $T$ correspondiente al autovalor $\lambda$.
+	
+	Llamaremos valor propio y vector propio de una matriz $A$, al valor propio y vector propio correspondiente de la transformación lineal $L_{A}$, respectivamente.
+\end{definition}
+
+Los autovectores de $T$ y $A_{T}$, en general, se hallan en espacios vectoriales distintos y no tienen que ser iguales. En cambio los autovalores que se hallan en el mismo cuerpo $\mathbb{K}$, por lo que cabe la pregunta: ¿son estos iguales o distintos? Una elegante respuesta a esta interrogante se da en las siguientes proposiciones.
+
+Sea $\{v_1,\ldots,v_n\}$ una base de $V$ y $A_{T}$ la matriz asociada a la transformación lineal $T\colon V \rightarrow{V}$ en esta base. A cada vector $v\in V$ , $v = \sum\limits_{j=1}^{n}x_{j}v_{j},$ le asociamos su vector de coordenadas $x_v=(x_1,\ldots,x_n)\in\mathbb{K}$. Con estas notaciones tenemos el siguiente resultado.
+
+\begin{proposition}
+	La función $\psi\colon V\rightarrow\mathbb{K}^{n\times 1}$, definida por $\psi(v)= x_v$, es un isomorfismo y satisface \[ \psi(T(v))=A_{T}(x_v) \].    
+\end{proposition}
+
+\begin{proof}
+	Es inmediato que $\psi$ es una transformación lineal, además es un isomorfismo, pues lleva la base $v_{i}$ de $V$ en la base canónica $e_{j}$ de $\mathbb{K}^{n \times n}$.
+	
+	Por otro lado
+	
+	\begin{flalign*}
+	\psi(T(v_{j}))  &=\psi(\sum\limits_{i=1}^{n}a_{ij}v_{i}) = (a_{1j},a_{2j},\ldots,a_{nj}) = A_{T}(e_{j})
+	\intertext{de donde}
+	\psi(T(v_{j}))  &=\psi(\sum\limits_{j=1}^{n}x_{j}T(v_{j})) = \sum\limits_{j=1}^{n}x_{j}\psi(T(v_{j}))\\
+	\psi(T(v_{j}))  &=\sum\limits_{x_{j}}^{n}{A_{T}}(e_{j}) = A_{T}(x_{1},\ldots,x_{n})^{t}\\
+	\psi(T(v_{j}))  &=A_{T}(x_{v})
+	\end{flalign*}
+	Esto concluye la prueba de la proposición.
+\end{proof}
+
+\begin{proposition}
+	Una transformación lineal $T\colon V\rightarrow V$ y su matriz asociada $A_{T}$ tienen los mismos autovalores.
+\end{proposition}
+
+\begin{proof}
+	Sea $\lambda$ un autovalor de $T$ y $v\in V$ un autovector correspondiente a $\lambda$, entonces
+	\begin{flalign*}
+	A_{T}(x_{v}) &= \psi(T_{v})\\
+	A_{T}(x_{v}) &= \psi(\lambda v)=\lambda\psi(v)\\
+	A_{T}(x_{v}) &= \lambda x_{v}
+	\end{flalign*}
+	Esto prueba que $\lambda$ es un autovalor de $A_{T}.$
+	
+	Recíprocamente, sea $\lambda$ un autovalor de $A_{T}$ y $x\in\mathbb{K}^{n\times 1}$ un correspondiente autovector. Existe entonces un vector $v\in V$ tal que $\psi(v)=x$ (pues $\psi$ es un isomorfismo), de donde
+	%\[
+	%\begin{aligned}
+	%\psi(T_{v}) &\rightarrow\rn[1]\\
+	%(x,y,z)&\longmapsto\sign\left(\frac{2}{x^{2}+y^{2}+z^{2}+1}-1\right)-6.
+	%\end{aligned}
+	%\]
+	\begin{align*}
+	\psi(T_{v}) &= A_{T}x \\
+	&= \lambda x = \lambda\psi(v)\\
+	&= \psi(\lambda v)
+	\end{align*}
+	
+	Siendo $\psi$ inyectiva, resulta $T(v)  = \lambda v$. Como $v \neq0$, $\lambda$ es un autovalor de $T$. Esto prueba la proposición.
+	
+\end{proof}
+
+\begin{proposition}
+	Una transformación lineal $T: V \rightarrow V$ y su matriz asociada $A_{T}$ tienen  los mismos autovalores.
+\end{proposition}
+
+\begin{proof}
+	Sea $\lambda$ un autovalor de $T$ y $v \in V$ un autovector correspondiente a $\lambda$, entonces
+	\begin{align*}
+	A_{T}(x_{v})	& = \psi(T(v)) \qquad\qquad(\text{por la proposición})\\
+	& = \psi(\lambda v) = \lambda \psi(v)\\
+	& = \lambda x_{v}
+	\end{align*}
+	Esto prueba que $\lambda$ es un autovector de $A_{T}$. \\
+	Recíprocamente, sea $\lambda$ un autovalor de $A_{T}$ y $x \in \mathbb{K}^{n \time 1}$ un correspondiente autovector. Existe entonces un vector $v \in V$ tal que $\psi(v) = x$(pues $\psi$ es un isomorfismo), de donde
+	\begin{align*}
+	\psi(T(v)) & =  \psi(T(v))\qquad\qquad(\text{por la proposición})\\
+	& = \psi(\lambda v) = \lambda \psi(v)\\
+	& = \lambda (x_{v})
+	\end{align*}
+	siendo $\psi$ inyectiva, resulta $T(v) = \lambda v$. Como $v \neq 0$, $\lambda$ es autovalor de $T$.
+\end{proof}
+
+\begin{corollary}
+	Si $A$, $P$ $\in \mathbb{K}^{n \times n}$ y $P$ es inversible, entonces $A$ y $P^{-1}AP$ tienen  los mismos autovalores.
+\end{corollary}
+
+\begin{proof}
+	Es suficiente observar que $A$ y $P^{-1}AP$ son matrices asociadas a una misma transformación lineal.
+\end{proof}
+
+\noindent La existencia de de autovalores de una transformación lineal depende del cuerpo $\mathbb{K}$ y de la dimensión del espacio vectorial, como se muestra en el siguiente ejemplo.
+
+\begin{example}
+	La transformación lineal $T\colon\mathbb{R}^{2} \rightarrow \mathbb{R}^{2}$, $T(x,y)=(-y,x)$ no posee autovalores en $\mathbb{R}$.\\
+	
+	En efecto, supongamos que $\lambda \in \mathbb{R} $ es un autovalor de $T$ y $v = (a,b) \neq 0$ un correspondiente autovector. Por definición \\
+	
+	$$(-b,a) = T(a,b) = \lambda(a,b)$$. \\
+	ecuación que no posee solución en $\mathbb{R}.$
+\end{example}
+
+\section{Tiangulación de Matrices. El Teorema de Cayley-Hamilton}
+Definición. Diremos que una matriz $A\in \mathbb{K}^{n \times n}$ es \textbf{triangulable}  si es semejante a una matriz triangular(superior). Una transformación lineal $T\colon V\rightarrow V$ es \textbf{triangulable} si existe una base de $V$ en la que la matriz asociada a $T$ es triangular.
+
+Una proposición importante sobre la estructura de una matriz es la siguiente.
+\begin{proposition}
+	Sea $\mathbb{K}=\mathbb{C}$. Toda transformación lineal $T\colon V\rightarrow V$ es triangulable.
+\end{proposition}
+
+\begin{proof}
+	Esta demostración se hará por inducción sobre $n=\dim V$. Si $n>1$, suponemos que la proposición es valida para todo espacio vectorial de dimensión $n-1$. Consideremos la transformación lineal $T^{\bigtriangledown}\colon V^{*} \rightarrow V^{*}$, definida por $T^{\bigtriangledown}(f)=f\circ T$, para $f\in V^{*}$.
+	
+	Sea $\lambda\in\mathbb{C}$ un autovalor de $T^{\bigtriangledown}$ y $g\in V^{*}$ un correspondiente autovector, esto es \[T^{\triangledown} = \lambda g ,~ g\neq 0.\] El subespacio de $V$ \[S = \{v \in V / g(v) = 0\}\] tiene dimensión $n-1$ y es invariante por $T(T(s)\subset S)$. Por hipótesis inductiva, $S$ posee una base $\{v_{1},\ldots,v_{n}\}$en la que $T$ se escribe como
+	
+	\begin{align*}
+	T(v_{1}) & = \lambda_{1}v_{1}\\
+	T(v_{2}) & = a_{12}v_{1} + \lambda_{2}v_{2}\\
+	& \vdots\\
+	T(v_{n-1}) & = a_{1,n-1}v_{1} +...+ \lambda_{n-1}v_{n-1}
+	\end{align*}
+	Si a los vectores $v_{1},\ldots,v_{n}$ agregamos un vector $v_{n}$ a fin de completar una base de $V$, con la expresión \[T(v_{n}) = a_{1n}v_{1},...,\lambda v_{n} \]
+	la matriz asociada a $T$, en la base $\{v_{1},\ldots,v_{n}\}$ es triangular superior.
+\end{proof}
+
+\nocite{*}
+\printbibliography[title={Referencias bibliográficas},heading=bibintoc]
+\end{document}
+

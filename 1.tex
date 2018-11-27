@@ -19,10 +19,11 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definición}[section]
 \newtheorem{proposition}{Proposición}[section]
-
+\newtheorem{corollary}{Corolario}[section]
+\newtheorem{example}{Ejemplo}[section]
 \begin{document}
-\pagecolor{black}
-\color{white}
+%\pagecolor{black}
+%\color{white}
 \section{Formas Canónicas}
 
 \subsection{Valores y Vectores Propios}
@@ -93,13 +94,62 @@ Siendo $\psi$ inyectiva, resulta $T(v)  = \lambda v$. Como $v \neq0$, $\lambda$ 
 \end{proposition}
 
 \begin{proof}
-Sea $\lambda$ un autovalor de $T$ y $v\in V$ un autovector correspondiente a $\lambda$, entonces
+	Sea $\lambda$ un autovalor de $T$ y $v \in V$ un autovector correspondiente a $\lambda$, entonces
+	\begin{align*}
+	A_{T}(x_{v})	& = \psi(T(v)) \qquad\qquad(\text{por la proposición})\\
+	& = \psi(\lambda v) = \lambda \psi(v)\\
+	& = \lambda x_{v}
+	\end{align*}
+	Esto prueba que $\lambda$ es un autovector de $A_{T}$. \\
+	Recíprocamente, sea $\lambda$ un autovalor de $A_{T}$ y $x \in \mathbb{K}^{n \time 1}$ un correspondiente autovector. Existe entonces un vector $v \in V$ tal que $\psi(v) = x$(pues $\psi$ es un isomorfismo), de donde
+	\begin{align*}
+	\psi(T(v)) & =  \psi(T(v))\qquad\qquad(\text{por la proposición})\\
+	& = \psi(\lambda v) = \lambda \psi(v)\\
+	& = \lambda (x_{v})
+	\end{align*}
+	siendo $\psi$ inyectiva, resulta $T(v) = \lambda v$. Como $v \neq 0$, $\lambda$ es autovalor de $T$.
+\end{proof}
+
+\begin{corollary}
+Si $A$, $P$ $\in \mathbb{K}^{n \times n}$ y $P$ es inversible, entonces $A$ y $P^{-1}AP$ tienen  los mismos autovalores.
+\end{corollary}
+
+\begin{proof}
+Es suficiente observar que $A$ y $P^{-1}AP$ son matrices asociadas a una misma transformación lineal.
+\end{proof}
+
+\noindent La existencia de de autovalores de una transformación lineal depende del cuerpo $\mathbb{K}$ y de la dimensión del espacio vectorial, como se muestra en el siguiente ejemplo.
+
+\begin{example}
+La transformación lineal $T\colon\mathbb{R}^{2} \rightarrow \mathbb{R}^{2}$, $T(x,y)=(-y,x)$ no posee autovalores en $\mathbb{R}$.\\
+
+En efecto, supongamos que $\lambda \in \mathbb{R} $ es un autovalor de $T$ y $v = (a,b) \neq 0$ un correspondiente autovector. Por definición \\
+
+$$(-b,a) = T(a,b) = \lambda(a,b)$$. \\
+ecuación que no posee solución en $\mathbb{R}.$
+\end{example}
+
+\section{Tiangulación de Matrices. El Teorema de Cayley-Hamilton}
+Definición. Diremos que una matriz $A\in \mathbb{K}^{n \times n}$ es \textbf{triangulable}  si es semejante a una matriz triangular(superior). Una transformación lineal $T\colon V\rightarrow V$ es \textbf{triangulable} si existe una base de $V$ en la que la matriz asociada a $T$ es triangular.
+
+Una proposición importante sobre la estructura de una matriz es la siguiente.
+\begin{proposition}
+Sea $\mathbb{K}=\mathbb{C}$. Toda transformación lineal $T\colon V\rightarrow V$ es triangulable.
+\end{proposition}
+
+\begin{proof}
+Esta demostración se hará por inducción sobre $n=\dim V$. Si $n>1$, suponemos que la proposición es valida para todo espacio vectorial de dimensión $n-1$. Consideremos la transformación lineal $T^{\bigtriangledown}\colon V^{*} \rightarrow V^{*}$, definida por $T^{\bigtriangledown}(f)=f\circ T$, para $f\in V^{*}$.
+
+Sea $\lambda\in\mathbb{C}$ un autovalor de $T^{\bigtriangledown}$ y $g\in V^{*}$ un correspondiente autovector, esto es \[T^{\triangledown} = \lambda g ,~ g\neq 0.\] El subespacio de $V$ \[S = \{v \in V / g(v) = 0\}\] tiene dimensión $n-1$ y es invariante por $T(T(s)\subset S)$. Por hipótesis inductiva, $S$ posee una base $\{v_{1},\ldots,v_{n}\}$en la que $T$ se escribe como
+
 \begin{align*}
-A_{T}(x_{v})&= \psi(T(v))  \text{(por la proposición)}\\
-						& = \psi(\lambda v) = \lambda \psi(v)\\
-						& = \lambda x_{v}
+		T(v_{1}) & = \lambda_{1}v_{1}\\
+		T(v_{2}) & = a_{12}v_{1} + \lambda_{2}v_{2}\\
+		& \vdots\\
+		T(v_{n-1}) & = a_{1,n-1}v_{1} +...+ \lambda_{n-1}v_{n-1}
 \end{align*}
-Esto prueba que $\lambda$ es un autovector de $A_{T}$.
+Si a los vectores $v_{1},\ldots,v_{n}$ agregamos un vector $v_{n}$ a fin de completar una base de $V$, con la expresión \[T(v_{n}) = a_{1n}v_{1},...,\lambda v_{n} \]
+la matriz asociada a $T$, en la base $\{v_{1},\ldots,v_{n}\}$ es triangular superior.
 \end{proof}
 % https://www.sciencedirect.com/search/advanced?tak=Minimal%20polynomial&show=25&sortBy=relevance
 % https://www.sciencedirect.com/science/article/pii/S1575181318302626
